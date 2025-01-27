@@ -1,76 +1,77 @@
 <!-- ##### Header Area Start ##### -->
-    <header class="header-area">
+<header class="header-area">
 
-        <!-- Top Header Area -->
-        <div class="top-header-area">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-between">
-                    <!-- Breaking News -->
-                    <div class="col-12 col-sm-6">
-                        <div class="breaking-news">
-                            <div id="breakingNewsTicker" class="ticker">
-                                <ul>
-                                    <li><a href="#">Hello World!</a></li>
-                                    <li><a href="#">Welcome to Colorlib Family.</a></li>
-                                    <li><a href="#">Hello Delicious!</a></li>
-                                </ul>
-                            </div>
+    <!-- Top Header Area -->
+    <div class="top-header-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-between">
+                <!-- Breaking News -->
+                <div class="col-12 col-sm-6">
+                    <div class="breaking-news">
+                        <div id="breakingNewsTicker" class="ticker">
+                            <ul>
+                                <li><a href="#">Hello World!</a></li>
+                                <li><a href="#">Welcome to Colorlib Family.</a></li>
+                                <li><a href="#">Hello Delicious!</a></li>
+                            </ul>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Top Social Info -->
-                    <div class="col-12 col-sm-6">
-                        <div class="top-social-info text-right">
-                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </div>
+                <!-- Top Social Info -->
+                <div class="col-12 col-sm-6">
+                    <div class="top-social-info text-right">
+                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Navbar Area -->
-        <div class="delicious-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
+    <!-- Navbar Area -->
+    <div class="delicious-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="deliciousNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="index.html"><img src="{{ asset('front/assets/img/core-img/logo.png') }}"
+                            alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
                     <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="deliciousNav">
+                    <div class="classy-menu">
 
-                        <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="{{asset('front/assets/img/core-img/logo.png')}}" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                         </div>
 
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- close btn -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="{{ url('/') }}">Home</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="blog-post.html">Blog Post</a></li>
-                                            <li><a href="receipe-post.html">Receipe Post</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
-                                        </ul>
-                                    </li>
-                                    {{-- <li><a href="#">Mega Menu</a>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li class="active"><a href="{{ url('/') }}">Home</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{{ url('/') }}">Home</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="blog-post.html">Blog Post</a></li>
+                                        <li><a href="receipe-post.html">Receipe Post</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="elements.html">Elements</a></li>
+                                    </ul>
+                                </li>
+                                {{-- <li><a href="#">Mega Menu</a>
                                         <div class="megamenu">
                                             <ul class="single-mega cn-col-4">
                                                 <li class="title">Catagory</li>
@@ -107,22 +108,29 @@
                                             </div>
                                         </div>
                                     </li> --}}
-                                    <li><a href="receipe-post.html">Receipies</a></li>
-                                    {{-- <li><a href="receipe-post.html">4 Vegans</a></li> --}}
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
+                                <li><a href="receipe-post.html">Receipies</a></li>
+                                {{-- <li><a href="receipe-post.html">4 Vegans</a></li> --}}
+                                <li><a href="contact.html">Contact</a></li>
+                                {{-- <li>
+                                    <a
+                                        href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                                    <form action="{{ route('logout') }}" method="post" id="logout-form">
+                                        @csrf
+                                    </form>
+                                </li> --}}
+                            </ul>
 
-                                <!-- Newsletter Form -->
-                                <div class="search-btn">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
-
+                            <!-- Newsletter Form -->
+                            <div class="search-btn">
+                                <i class="fa fa-search" aria-hidden="true"></i>
                             </div>
-                            <!-- Nav End -->
+
                         </div>
-                    </nav>
-                </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
             </div>
         </div>
-    </header>
-    <!-- ##### Header Area End ##### -->
+    </div>
+</header>
+<!-- ##### Header Area End ##### -->

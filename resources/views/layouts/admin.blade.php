@@ -91,7 +91,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            {{-- <footer class="content-footer footer bg-footer-theme">
+            <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0">
                   ©
@@ -120,7 +120,7 @@
                   >
                 </div>
               </div>
-            </footer> --}}
+            </footer>
             <!-- / Footer -->
 
           </div>
@@ -165,5 +165,6 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     @stack('scripts')
+    @include('sweetalert::alert')
   </body>
 </html>

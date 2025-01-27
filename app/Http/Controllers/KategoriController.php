@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KategoriController extends Controller
 {
@@ -15,6 +16,9 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::all();
+        $title = 'Hapus Kategori!';
+        $text = 'Apakah anda yakin ingin menghapus kategori ini?';
+        confirmDelete($title, $text);
         return view('admin.kategori.index', compact('kategori'));
     }
 
@@ -25,7 +29,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('admin.kategori.create', compact('kategori'));
+        //
     }
 
     /**
@@ -44,6 +48,8 @@ class KategoriController extends Controller
         $kategori->nama_kategori = $request->nama_kategori;
 
         $kategori->save();
+        Alert::success('Success', 'Kategori berhasil ditambahkan')->autoClose(5000);
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -75,9 +81,18 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama_kategori' => 'required|unique:kategoris,nama_kategori',
+        ]);
+
+        $kategori = Kategori::findorFail($id);
+        $kategori->nama_kategori = $request->nama_kategori;
+
+        $kategori->save();
+        Alert::success('Success', 'Kategori berhasil diubah')->auotoClose(5000);
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -86,8 +101,10 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy($id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+        $kategori->delete();
+        return redirect()->route('kategori.index');
     }
 }
