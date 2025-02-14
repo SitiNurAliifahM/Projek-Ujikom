@@ -48,7 +48,7 @@ class KategoriController extends Controller
         $kategori->nama_kategori = $request->nama_kategori;
 
         $kategori->save();
-        Alert::success('Success', 'Kategori berhasil ditambahkan')->autoClose(5000);
+        Alert::success('Sukses', 'Kategori berhasil ditambahkan')->autoClose(5000);
         return redirect()->route('kategori.index');
     }
 
@@ -91,7 +91,7 @@ class KategoriController extends Controller
         $kategori->nama_kategori = $request->nama_kategori;
 
         $kategori->save();
-        Alert::success('Success', 'Kategori berhasil diubah')->auotoClose(5000);
+        Alert::success('Sukses', 'Kategori berhasil diubah')->autoClose(5000);
         return redirect()->route('kategori.index');
     }
 
@@ -104,7 +104,11 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         $kategori = Kategori::findOrFail($id);
+        if ($kategori->resep()->count() > 0) {
+            return redirect()->route('kategori.index')->with('error', 'kategori tidak bisa dihapus karena terdapat resep di kategori ini');
+        }
         $kategori->delete();
+        Alert::success('Sukses', 'Data Berhasil Dihapus')->autoClose(1000);
         return redirect()->route('kategori.index');
     }
 }

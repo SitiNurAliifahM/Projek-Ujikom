@@ -12,7 +12,7 @@
     <title>Resepku</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('front/assets/img/core-img/logoresepku.png')}}">
+    <link rel="icon" href="{{asset('front/assets/img/core-img/resep.png')}}">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{asset('front/assets/css/style.css')}}">
@@ -36,7 +36,7 @@
     <!-- Preloader -->
     <div id="preloader">
         <i class="circle-preloader"></i>
-        <img src="{{asset('front/assets/img/core-img/logoresepku.png')}}" alt="">
+        <img src="{{asset('front/assets/img/core-img/resep-removebg-preview.png')}}" alt="" style="width: 70px">
     </div>
 
     <!-- Search Wrapper -->

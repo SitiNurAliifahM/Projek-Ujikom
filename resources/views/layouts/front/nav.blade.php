@@ -6,7 +6,7 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-between">
                 <!-- Breaking News -->
-                <div class="col-12 col-sm-6">
+                {{-- <div class="col-12 col-sm-6">
                     <div class="breaking-news">
                         <div id="breakingNewsTicker" class="ticker">
                             <ul>
@@ -16,10 +16,17 @@
                             </ul>
                         </div>
                     </div>
+                </div> --}}
+                <div class="top-social-info text-right">
+                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </div>
-
                 <!-- Top Social Info -->
-                <div class="col-12 col-sm-6">
+                {{-- <div class="col-12 col-sm-6">
                     <div class="top-social-info text-right">
                         <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -28,7 +35,7 @@
                         <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -41,8 +48,9 @@
                 <nav class="classy-navbar justify-content-between" id="deliciousNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="{{ asset('front/assets/img/core-img/logo.png') }}"
-                            alt=""></a>
+                    <a class="nav-brand" href="index.html"><img
+                            src="{{ asset('front/assets/img/core-img/resep-removebg-preview.png') }}" alt=""
+                            style="width: 250px;"></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -60,57 +68,20 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                <li><a href="#">Pages</a>
+                                <li><a href="{{ url('/') }}">Beranda</a></li>
+                                {{-- <li><a href="#">Pages</a>
                                     <ul class="dropdown">
                                         <li><a href="{{ url('/') }}">Home</a></li>
-                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="{{ url('about') }}">About Us</a></li>
                                         <li><a href="blog-post.html">Blog Post</a></li>
                                         <li><a href="receipe-post.html">Receipe Post</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                         <li><a href="elements.html">Elements</a></li>
                                     </ul>
-                                </li>
-                                {{-- <li><a href="#">Mega Menu</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Catagory</li>
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="blog-post.html">Blog Post</a></li>
-                                                <li><a href="receipe-post.html">Receipe Post</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Catagory</li>
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="blog-post.html">Blog Post</a></li>
-                                                <li><a href="receipe-post.html">Receipe Post</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Catagory</li>
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="blog-post.html">Blog Post</a></li>
-                                                <li><a href="receipe-post.html">Receipe Post</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <div class="single-mega cn-col-4">
-                                                <div class="receipe-slider owl-carousel">
-                                                    <a href="#"><img src="{{asset('front/assets/img/bg-img/bg1.jpg')}}" alt=""></a>
-                                                    <a href="#"><img src="{{asset('front/assets/img/bg-img/bg6.jpg')}}" alt=""></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li> --}}
-                                <li><a href="receipe-post.html">Receipies</a></li>
-                                {{-- <li><a href="receipe-post.html">4 Vegans</a></li> --}}
-                                <li><a href="contact.html">Contact</a></li>
+                                </li> --}}
+                                <li><a href="{{ url('resep') }}">Resep</a></li>
+                                <li><a href="{{ url('tentang') }}">Tentang</a></li>
+                                <li><a href="{{ url('kontak') }}">Hubungi Kami</a></li>
                                 {{-- <li>
                                     <a
                                         href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>

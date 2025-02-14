@@ -1,7 +1,6 @@
 @extends('layouts.front')
 @section('content')
-
-<!-- ##### Hero Area Start ##### -->
+    <!-- ##### Hero Area Start ##### -->
     <section class="hero-area">
         <div class="hero-slides owl-carousel">
             <!-- Single Hero Slide -->
@@ -11,8 +10,11 @@
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem eget dui tristique, ac posuere arcu varius.</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">See Receipe</a>
+                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem
+                                    eget dui tristique, ac posuere arcu varius.</p>
+                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp"
+                                    data-delay="1000ms">See Receipe</a>
                             </div>
                         </div>
                     </div>
@@ -26,8 +28,11 @@
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem eget dui tristique, ac posuere arcu varius.</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">See Receipe</a>
+                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem
+                                    eget dui tristique, ac posuere arcu varius.</p>
+                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp"
+                                    data-delay="1000ms">See Receipe</a>
                             </div>
                         </div>
                     </div>
@@ -41,8 +46,11 @@
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem eget dui tristique, ac posuere arcu varius.</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">See Receipe</a>
+                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem
+                                    eget dui tristique, ac posuere arcu varius.</p>
+                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp"
+                                    data-delay="1000ms">See Receipe</a>
                             </div>
                         </div>
                     </div>
@@ -138,7 +146,7 @@
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="{{asset('front/assets/img/bg-img/r3.jpg')}}" alt="">
+                        <img src="{{ asset('front/assets/img/bg-img/r3.jpg') }}" alt="">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
                                 <h5>Vegan Smoothie</h5>
@@ -157,7 +165,7 @@
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="{{asset('front/assets/img/bg-img/r4.jpg')}}" alt="">
+                        <img src="{{ asset('front/assets/img/bg-img/r4.jpg') }}" alt="">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
                                 <h5>Calabasa soup</h5>
@@ -176,7 +184,7 @@
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="{{asset('front/assets/img/bg-img/r5.jpg')}}" alt="">
+                        <img src="{{ asset('front/assets/img/bg-img/r5.jpg') }}" alt="">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
                                 <h5>Homemade Breakfast</h5>
@@ -195,7 +203,7 @@
                 <!-- Single Best Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="{{asset('front/assets/img/bg-img/r6.jpg')}}" alt="">
+                        <img src="{{ asset('front/assets/img/bg-img/r6.jpg') }}" alt="">
                         <div class="receipe-content">
                             <a href="receipe-post.html">
                                 <h5>Healthy Fruit Desert</h5>
@@ -223,7 +231,9 @@
                     <!-- Cta Content -->
                     <div class="cta-content text-center">
                         <h2>Gluten Free Receipies</h2>
-                        <p>Fusce nec ante vitae lacus aliquet vulputate. Donec scelerisque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras sed accumsan neque. Ut vulputate, lectus vel aliquam congue, risus leo elementum nibh</p>
+                        <p>Fusce nec ante vitae lacus aliquet vulputate. Donec scelerisque accumsan molestie. Vestibulum
+                            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras sed accumsan
+                            neque. Ut vulputate, lectus vel aliquam congue, risus leo elementum nibh</p>
                         <a href="#" class="btn delicious-btn">Discover all the receipies</a>
                     </div>
                 </div>
@@ -242,7 +252,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr1.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr1.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -267,7 +277,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr2.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr2.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -292,7 +302,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr3.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr3.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -317,7 +327,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr4.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr4.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -342,7 +352,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr5.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr5.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -367,7 +377,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr6.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr6.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -392,7 +402,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr7.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr7.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -417,7 +427,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr8.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr8.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -442,7 +452,7 @@
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{{asset('front/assets/img/bg-img/sr9.jpg')}}" alt="">
+                            <img src="{{ asset('front/assets/img/bg-img/sr9.jpg') }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
@@ -478,30 +488,7 @@
                         <p>John Smith</p>
                         <div class="date-comments d-flex justify-content-between">
                             <div class="date">January 04, 2018</div>
-                            <div class="comments">2 Comments</div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Newsletter -->
-                <div class="col-12 col-lg-4">
-                    <div class="newsletter-area">
-                        <h4>Subscribe to our newsletter</h4>
-                        <!-- Form -->
-                        <div class="newsletter-form bg-img bg-overlay" style="background-image: url(front/assets/img/bg-img/bg1.jpg);">
-                            <form action="#" method="post">
-                                <input type="email" name="email" placeholder="Subscribe to newsletter">
-                                <button type="submit" class="btn delicious-btn w-100">Subscribe</button>
-                            </form>
-                            <p>Fusce nec ante vitae lacus aliquet vulputate. Donec sceleri sque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Adds -->
-                <div class="col-12 col-lg-4">
-                    <div class="delicious-add">
-                        <img src="{{asset('front/assets/img/bg-img/add.png')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -522,7 +509,7 @@
         <div class="insta-feeds d-flex flex-wrap">
             <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
-                <img src="{{asset('front/assets/img/bg-img/insta1.jpg')}}" alt="">
+                <img src="{{ asset('front/assets/img/bg-img/insta1.jpg') }}" alt="">
                 <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -531,7 +518,7 @@
 
             <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
-                <img src="{{asset('front/assets/img/bg-img/insta2.jpg')}}" alt="">
+                <img src="{{ asset('front/assets/img/bg-img/insta2.jpg') }}" alt="">
                 <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -540,7 +527,7 @@
 
             <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
-                <img src="{{asset('front/assets/img/bg-img/insta3.jpg')}}" alt="">
+                <img src="{{ asset('front/assets/img/bg-img/insta3.jpg') }}" alt="">
                 <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -549,7 +536,7 @@
 
             <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
-                <img src="{{asset('front/assets/img/bg-img/insta4.jpg')}}" alt="">
+                <img src="{{ asset('front/assets/img/bg-img/insta4.jpg') }}" alt="">
                 <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -558,7 +545,7 @@
 
             <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
-                <img src="{{asset('front/assets/img/bg-img/insta5.jpg')}}" alt="">
+                <img src="{{ asset('front/assets/img/bg-img/insta5.jpg') }}" alt="">
                 <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -567,7 +554,7 @@
 
             <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
-                <img src="{{asset('front/assets/img/bg-img/insta6.jpg')}}" alt="">
+                <img src="{{ asset('front/assets/img/bg-img/insta6.jpg') }}" alt="">
                 <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -576,7 +563,7 @@
 
             <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
-                <img src="{{asset('front/assets/img/bg-img/insta7.jpg')}}" alt="">
+                <img src="{{ asset('front/assets/img/bg-img/insta7.jpg') }}" alt="">
                 <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -585,5 +572,4 @@
         </div>
     </div>
     <!-- ##### Follow Us Instagram Area End ##### -->
-
 @endsection

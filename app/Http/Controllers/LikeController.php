@@ -14,7 +14,9 @@ class LikeController extends Controller
      */
     public function index()
     {
-        //
+        $likes = Like::all();
+        return response()->json($likes);
+
     }
 
     /**
@@ -35,7 +37,15 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_user' => 'required|integer',
+            'id_resep' => 'required|integer',
+            'is_like' => 'required|boolean',
+        ]);
+
+        $like = Like::create($request->all());
+        return response()->json($like, 201);
+
     }
 
     /**

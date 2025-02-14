@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
     <div class="content-wrapper">
         <!-- Content -->
@@ -14,6 +13,37 @@
                     </button>
                 </div>
             </div>
+
+            @if (session('error'))
+                <div class="bs-toast toast toast-placement-ex m-2 bg-danger top-0 end-0 fade show toast-custom" role="alert"
+                    aria-live="assertive" aria-atomic="true" id="toastError">
+                    <div class="toast-header">
+                        <i class="bx bx-error me-2"></i>
+                        <div class="me-auto fw-semibold">Error</div>
+                        <small>Baru saja</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        {{ session('error') }}
+                    </div>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="bs-toast toast toast-placement-ex m-2 bg-success top-0 end-0 fade show toast-custom"
+                    role="alert" aria-live="assertive" aria-atomic="true" id="toastSuccess">
+                    <div class="toast-header">
+                        <i class="bx bx-check me-2"></i>
+                        <div class="me-auto fw-semibold">Success</div>
+                        <small>Baru saja</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        {{ session('success') }}
+                    </div>
+                </div>
+            @endif
+
             <div class="card">
                 <h5 class="card-header">Tabel Kategori</h5>
                 <div class="table-responsive text-nowrap">
@@ -32,23 +62,27 @@
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $data->nama_kategori }}</td>
                                     <td>
-                                        <!-- Tombol Edit -->
-                                        <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#editKategoriModal-{{ $data->id }}">
-                                            <i class="bx bxs-pencil" data-bs-toggle="tooltip" title="Edit Kategori"></i>
-                                        </button>
 
-                                        <!-- Tombol Show -->
-                                        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#showKategoriModal-{{ $data->id }}">
-                                            <i class="bx bx-show" data-bs-toggle="tooltip" title="Detail Kategori"></i>
-                                        </button>
-
-                                        <!-- Tombol Hapus -->
-                                        <form action="{{ route('kategori.destroy', $data->id) }}" method="POST"
-                                            class="d-inline" data-confirm-delete="true">
+                                        <form action="{{ route('kategori.destroy', $data->id) }}"
+                                            onsubmit="return confirm('apakah anda yakin ingin menghapus kategori ini?')"
+                                            method="POST" class="d-inline delete-form">
                                             @csrf
                                             @method('DELETE')
+                                            <!-- Tombol Edit -->
+                                            {{-- <button type="button" class="btn btn-outline-success btn-sm"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#editKategoriModal-{{ $data->id }}">
+                                                <i class="bx bxs-pencil" data-bs-toggle="tooltip" title="Edit Kategori"></i>
+                                            </button> --}}
+
+                                            <!-- Tombol Show -->
+                                            <button type="button" class="btn btn-outline-primary btn-sm"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#showKategoriModal-{{ $data->id }}">
+                                                <i class="bx bx-show" data-bs-toggle="tooltip" title="Detail Kategori"></i>
+                                            </button>
+
+                                            <!-- Tombol Hapus -->
                                             <button type="submit" class="btn btn-outline-danger btn-sm">
                                                 <i class="bx bxs-trash-alt" data-bs-toggle="tooltip"
                                                     title="Hapus Kategori"></i>
@@ -58,7 +92,7 @@
                                 </tr>
 
                                 <!-- Modal Edit Kategori -->
-                                <div class="modal fade" id="editKategoriModal-{{ $data->id }}" tabindex="-1"
+                                {{-- <div class="modal fade" id="editKategoriModal-{{ $data->id }}" tabindex="-1"
                                     aria-labelledby="editKategoriLabel-{{ $data->id }}" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -92,7 +126,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <!-- Modal Show Kategori -->
                                 <div class="modal fade" id="showKategoriModal-{{ $data->id }}" tabindex="-1"
@@ -106,7 +140,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p><strong>ID:</strong> {{ $data->id }}</p>
+                                                {{-- <p><strong>ID:</strong> {{ $data->id }}</p> --}}
                                                 <p><strong>Nama Kategori:</strong> {{ $data->nama_kategori }}</p>
                                             </div>
                                             <div class="modal-footer">

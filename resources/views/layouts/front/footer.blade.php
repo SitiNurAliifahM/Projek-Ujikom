@@ -3,17 +3,17 @@
             <div class="row h-100">
                 <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
                     <!-- Footer Social Info -->
-                    <div class="footer-social-info text-right">
+                    {{-- <div class="footer-social-info text-right">
                         <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    </div>
+                    </div> --}}
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="index.html"><img src="{{asset('front/assets/img/core-img/logo.png')}}" alt=""></a>
+                        <a href="index.html"><img src="{{asset('front/assets/img/core-img/resep-removebg-preview.png')}}" alt="" style="width: 40%"></a>
                     </div>
                     <!-- Copywrite -->
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
