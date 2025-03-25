@@ -11,56 +11,36 @@
                     <div class="card-body">
                         <form>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-name">Nama Resep</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="nama_resep"
-                                        class="form-control @error('nama_resep') is-invalid @enderror"
-                                        id="basic-default-name" value="{{ $resep->nama_resep }}" placeholder="nama resep"
-                                        required disabled />
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-message">Deskripsi</label>
-                                <div class="col-sm-10">
-                                    <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?"
-                                        aria-describedby="basic-icon-default-message2" required disabled>
-                                        {!! $resep->deskripsi !!}
-                                    </textarea>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-company">Nama Kategori</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="basic-default-company" value="{{$resep->kategori->nama_kategori}}"
-                                        placeholder="ACME Inc." required disabled/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-email">Email</label>
-                                <div class="col-sm-10">
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="basic-default-email" class="form-control"
-                                            placeholder="john.doe" aria-label="john.doe"
-                                            aria-describedby="basic-default-email2" />
-                                        <span class="input-group-text" id="basic-default-email2">@example.com</span>
-                                    </div>
-                                    <div class="form-text">You can use letters, numbers & periods</div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-phone">Phone No</label>
-                                <div class="col-sm-10">
-                                    <input type="text" id="basic-default-phone" class="form-control phone-mask"
-                                        placeholder="658 799 8941" aria-label="658 799 8941"
-                                        aria-describedby="basic-default-phone" />
+                                <label class="col-sm-2 col-form-label fw-bold">Nama Resep : </label>
+                                <div class="col-sm-10 d-flex align-items-center">
+                                    <span>{{ $resep->nama_resep }}</span>
                                 </div>
                             </div>
 
-                            <div class="row justify-content-end">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label fw-bold">Deskripsi : </label>
+                                <div class="col-sm-10 d-flex align-items-center">
+                                    <span>{!! $resep->deskripsi !!}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label fw-bold">Nama Kategori : </label>
+                                <div class="col-sm-10 d-flex align-items-center">
+                                    <span>{{ $resep->kategori->nama_kategori }}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Gambar Resep : </label>
                                 <div class="col-sm-10">
-                                    <a href="{{ route('resep.index') }}">
-                                        <button type="submit" class="btn btn-primary">Kembali</button>
-                                    </a>
+                                    <img src="{{ asset('gambars/resep/' . $resep->gambar) }}" alt="Gambar Resep"
+                                        class="img-fluid rounded" style="max-height: 300px;">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-10">
+                                    <a href="{{ route('resep.index') }}" class="btn btn-outline-danger">Kembali</a>
                                 </div>
                             </div>
                         </form>

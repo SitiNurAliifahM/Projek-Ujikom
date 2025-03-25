@@ -7,7 +7,7 @@
     <title>Register</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{asset('assets/img/logo/resep.png')}}" />
 
     <!-- Fonts -->
     <link
@@ -38,13 +38,9 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Logo -->
-                        <div class="app-brand justify-content-center">
-                            <a href="index.html" class="app-brand-link gap-2">
-                                <span class="app-brand-logo demo">
-                                    <!-- Logo SVG -->
-                                </span>
-                                <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
-                            </a>
+                        <div style="text-align: center;">
+                            <img src="{{ asset('assets/img/logo/resep-removebg-preview.png') }}" alt="Logo"
+                                width="150px;">
                         </div>
                         <!-- /Logo -->
 
@@ -102,7 +98,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary d-grid w-100" type="submit">Daftar</button>
+                            <button class="btn btn-success d-grid w-100" type="submit">Daftar</button>
                         </form>
 
                         <p class="text-center">

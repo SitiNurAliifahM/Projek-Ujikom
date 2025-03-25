@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Kategori;
+use App\Http\Controllers\Controller;
 use App\Models\Resep;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class ResepController extends Controller
 {
@@ -16,47 +15,40 @@ class ResepController extends Controller
      */
     public function index()
     {
-        $resep = Resep::latest()->get();
-        $kategori = Kategori::all();
-        confirmDelete('Hapus', 'Apakah anda yakin ingin menghapus resep ini?');
-        return view('admin.resep.index', compact('resep', 'kategori'));
+        $resep = Resep::latest()->with('kategori')->get(); // Mengambil resep dengan relasi kategori
+        return response()->json($resep); // Kembalikan data dalam format JSON
     }
 
-    public function listResep(Request $request)
-    {
-        $query = Resep::query();
-
-        // Jika ada request kategori, filter berdasarkan kategori
-        if ($request->has('id_kategori') && $request->id_kategori != '') {
-            $query->where('id_kategori', $request->id_kategori);
-        }
-
-        $resep = $query->get();
-        $kategori = Kategori::all();
-
-        return view('front.resep', compact('resep', 'kategori'));
-    }
-
+    /**
+     * Search resep by category or name
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function search(Request $request)
     {
         $query = $request->input('query');
 
-        $resep = Resep::where('nama_kategori', 'LIKE', "%$query%")
-            ->orWhere('kategori', 'LIKE', "%$query%")
+        $resep = Resep::where('nama_resep', 'LIKE', "%$query%")
+            ->orWhereHas('kategori', function ($q) use ($query) {
+                $q->where('nama_kategori', 'LIKE', "%$query%");
+            })
+            ->with('kategori') // Pastikan kategori juga diload
             ->get();
 
-        return view('front.index', compact('resep'));
+        return response()->json($resep);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function show($id)
     {
-        $kategori = Kategori::all();
-        return view('admin.resep.create', compact('kategori'));
+        $resep = Resep::with('kategori')->findOrFail($id); // Mengambil resep dan relasi kategori
+        return response()->json($resep); // Kembalikan data resep dalam format JSON
     }
 
     /**
@@ -91,9 +83,6 @@ class ResepController extends Controller
 
         // upload gambar
         if ($request->hasFile('gambar')) {
-            if ($resep->gambar && file_exists(public_path('gambars/resep/' . $resep->gambar))) {
-                unlink(public_path('gambars/resep/' . $resep->gambar));
-            }
             $gambar = $request->file('gambar');
             $name = rand(1000, 9999) . $gambar->getClientOriginalName();
             $gambar->move(public_path('gambars/resep'), $name);
@@ -101,42 +90,15 @@ class ResepController extends Controller
         }
 
         $resep->save();
-        Alert::success('Success', 'Resep berhasil ditambahkan')->autoClose(5000);
-        return redirect()->route('resep.index');
-        dd($request->all()); // Debug untuk melihat apakah data dikirim
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Resep  $resep
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $resep = Resep::findOrFail($id);
-        return view('admin.resep.show', compact('resep'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Resep  $resep
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $resep = Resep::findOrFail($id);
-        $kategori = Kategori::all();
-        return view('admin.resep.edit', compact('resep', 'kategori'));
+        return response()->json(['message' => 'Resep berhasil ditambahkan', 'data' => $resep], 201);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Resep  $resep
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -153,7 +115,7 @@ class ResepController extends Controller
         $resep->id_kategori = $request->id_kategori;
         $resep->deskripsi = $request->deskripsi;
 
-        // upload gambar
+        // upload gambar jika ada
         if ($request->hasFile('gambar')) {
             if ($resep->gambar && file_exists(public_path('gambars/resep/' . $resep->gambar))) {
                 unlink(public_path('gambars/resep/' . $resep->gambar));
@@ -164,25 +126,28 @@ class ResepController extends Controller
             $resep->gambar = $name;
         }
 
-        // dd($id);die;
         $resep->save();
-        Alert::success('Success', 'Resep berhasil diubah')->autoClose(5000);
-        return redirect()->route('resep.index');
 
+        return response()->json(['message' => 'Resep berhasil diubah', 'data' => $resep]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Resep  $resep
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $resep = Resep::findOrFail($id);
+
+        // Menghapus gambar jika ada
+        if ($resep->gambar && file_exists(public_path('gambars/resep/' . $resep->gambar))) {
+            unlink(public_path('gambars/resep/' . $resep->gambar));
+        }
+
         $resep->delete();
 
-        Alert::success('Success', 'Resep berhasil dihapus')->autoClose(5000);
-        return redirect()->route('resep.index');
+        return response()->json(['message' => 'Resep berhasil dihapus']);
     }
 }

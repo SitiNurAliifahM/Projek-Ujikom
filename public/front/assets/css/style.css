@@ -9,14 +9,14 @@
 /* :: 1.0 Import Fonts */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
 /* :: 2.0 Import All CSS */
-@import url(css/bootstrap.min.css);
+/* @import url(css/bootstrap.min.css);
 @import url(css/owl.carousel.min.css);
 @import url(css/animate.css);
 @import url(css/magnific-popup.css);
 @import url(css/font-awesome.min.css);
 @import url(css/custom-icon.css);
 @import url(css/classy-nav.min.css);
-@import url(css/nice-select.min.css);
+@import url(css/nice-select.min.css); */
 /* :: 3.0 Base CSS */
 * {
   margin: 0;
@@ -678,26 +678,63 @@ textarea:focus {
 
 /* :: 8.0 Best Receipe Area */
 .best-receipe-area {
-  position: relative;
-  z-index: 1;
-  padding-bottom: 50px; }
+    position: relative;
+    z-index: 1;
+    padding-bottom: 50px;
+}
 
 .single-best-receipe-area {
-  position: relative;
-  z-index: 1; }
-  .single-best-receipe-area img {
-    border-bottom: 3px solid #40ba37; }
-  .single-best-receipe-area .receipe-content {
-    padding-top: 30px;
-    text-align: left; }
-    .single-best-receipe-area .receipe-content h5 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      font-weight: 400;
-      -webkit-transition-duration: 500ms;
-      transition-duration: 500ms; }
-      /* .single-best-receipe-area .receipe-content h5:hover, .single-best-receipe-area .receipe-content h5:focus {
-        color: #40ba37; } */
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    /* Supaya teks tetap rapi */
+}
+
+.single-best-receipe-area img {
+    border-bottom: 3px solid #40ba37;
+}
+
+.single-best-receipe-area .receipe-content {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Ikon dan teks tetap sejajar */
+    gap: 2px;
+    text-align: center;
+    /* Pastikan teks tetap di tengah */
+}
+
+.single-best-receipe-area .receipe-content h5 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 400;
+    flex: 1;
+    /* Biar teks menyesuaikan */
+    white-space: normal;
+    /* Supaya teks tetap bisa turun ke bawah */
+    text-align: center;
+    /* Teks tetap sejajar */
+    transition: color 0.3s ease-in-out;
+}
+
+/* .like-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-left: 5px;
+}
+
+.like-btn i {
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.like-btn i:hover {
+    color: #40ba37;
+} */
 
 /* :: 9.0 Cta Area */
 .cta-area {
@@ -762,11 +799,6 @@ textarea:focus {
           font-size: 16px; } }
       .single-small-receipe-area .receipe-content a h5:hover, .single-small-receipe-area .receipe-content a h5:focus {
         color: #40ba37; }
-  .single-small-receipe-area .receipe-content .ratings i {
-    font-size: 11px;
-    color: #fbb710;
-    display: inline-block;
-    padding: 0 1px; }
   .single-small-receipe-area .receipe-content p {
     font-size: 12px;
     margin-bottom: 0;
@@ -1016,7 +1048,9 @@ textarea:focus {
       margin-bottom: 0; }
 
 .receipe-ratings .ratings {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  gap: 5px;
+ }
 .receipe-ratings i {
   font-size: 18px;
   color: #fbb710;
@@ -1373,3 +1407,13 @@ textarea:focus {
     padding-left: 30px; }
 
 /*# sourceMappingURL=style.css.map */
+
+.fas.fa-heart.text-danger {
+    color: red;
+    /* Warna merah untuk like */
+}
+
+.far.fa-heart.text-secondary {
+    color: gray;
+    /* Warna abu-abu untuk belum like */
+}

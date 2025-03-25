@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resep;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -26,11 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $userCount = User::count();
+        $resepCount = Resep::count();
         $user = Auth::user();
+        $resep = Resep::take(6)->get();
         if ($user->role == 1) {
-            return view('admin.index');
+            return view('admin.index', compact('userCount', 'resepCount'));
         } else {
-            return view('front.index');
+            return view('front.index', compact('resep'));
         }
     }
 

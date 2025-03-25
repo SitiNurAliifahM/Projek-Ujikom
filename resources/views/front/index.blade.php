@@ -105,119 +105,31 @@
             </div>
 
             <div class="row">
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="front/assets/img/bg-img/r1.jpg" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Sushi Easy Receipy</h5>
+                @foreach ($resep as $data)
+                    <!-- Single Best Recipe Area -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-best-receipe-area mb-30">
+                            <a href="{{ url('detail_resep') . '/' . $data->id }}">
+                                <img src="{{ asset('/gambars/resep/' . $data->gambar) }}" alt=""
+                                    style="max-height: 250px; max-width:250px;">
                             </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="receipe-content d-flex justify-content-between align-items-center gap-2">
+                                <h5 class="mb-0" style="flex-grow: 1;">{{ $data->nama_resep }}</h5>
 
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="front/assets/img/bg-img/r2.jpg" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Homemade Burger</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                @php
+                                    $liked = $data->likes && $data->likes->contains('id_user', auth()->id());
+                                @endphp
 
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{{ asset('front/assets/img/bg-img/r3.jpg') }}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Vegan Smoothie</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <button type="button" class="like-btn" data-resep-id="{{ $data->id }}"
+                                    data-liked="{{ $liked ? 'true' : 'false' }}"
+                                    style="background: none; border: none; cursor: pointer; outline: none">
+                                    <i class="{{ $liked ? 'fas fa-heart text-danger' : 'far fa-heart text-secondary' }}"
+                                        style="font-size: 20px;"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{{ asset('front/assets/img/bg-img/r4.jpg') }}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Calabasa soup</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{{ asset('front/assets/img/bg-img/r5.jpg') }}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Homemade Breakfast</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{{ asset('front/assets/img/bg-img/r6.jpg') }}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Healthy Fruit Desert</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -246,231 +158,25 @@
     <section class="small-receipe-area section-padding-80-0">
         <div class="container">
             <div class="row">
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr1.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Homemade italian pasta</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                @foreach ($resep as $data)
+                    <!-- Small Receipe Area -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-small-receipe-area d-flex">
+                            <!-- Receipe Thumb -->
+                            <div class="receipe-thumb">
+                                <img src="{{ asset('/gambars/resep/' . $data->gambar) }}" alt="">
                             </div>
-                            <p>2 Comments</p>
+                            <!-- Receipe Content -->
+                            <div class="receipe-content">
+                                <span>{{ $data->created_at }}</span>
+                                <a href="{{ url('detail_resep') . '/' . $data->id }}">
+                                    <h5>{{ $data->nama_resep }}</h5>
+                                </a>
+                                <h6 style="color: gray;">{{ $data->kategori->nama_kategori }}</h6>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr2.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Baked Bread</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr3.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Scalops on salt</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr4.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Fruits on plate</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr5.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Macaroons</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr6.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Chocolate tart</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr7.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Berry Desert</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr8.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Zucchini Grilled on peper</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{{ asset('front/assets/img/bg-img/sr9.jpg') }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="receipe-post.html">
-                                <h5>Chicken Salad</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -497,7 +203,7 @@
     <!-- ##### Quote Subscribe Area End ##### -->
 
     <!-- ##### Follow Us Instagram Area Start ##### -->
-    <div class="follow-us-instagram">
+    {{-- <div class="follow-us-instagram">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -570,6 +276,135 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- ##### Follow Us Instagram Area End ##### -->
 @endsection
+
+{{-- @section('script')
+    <script>
+        // return;
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        const baseUrl = $('input[type=hidden][name="base_url"]').val()
+        console.log(baseUrl)
+
+        $('.like-btn').on('click', async function(e) {
+            e.preventDefault();
+
+            const resepId = $(this).data('resep-id')
+            const userId = $(this).data('user-id')
+            console.log(userId)
+
+            await onClickLikeBtn(resepId, $(this))
+        })
+
+        async function onClickLikeBtn(resepId = null, el) {
+            try {
+                const requestParams = {
+                    id_resep: resepId
+                }
+                const response = await ajaxRequest('toggle-like', 'POST', requestParams)
+
+                if (response?.liked) {
+                    el?.addClass('liked'); // Tambahkan class untuk menandakan like
+                } else {
+                    el?.removeClass('liked'); // Hapus class jika unlike
+                }
+            } catch (e) {
+                console.error(e)
+            } finally {
+                console.log(el)
+            }
+        }
+
+        const ajaxRequest = async (url, method = 'GET', data = {}) => {
+            await $.ajax({
+                url: `${baseUrl}/${url}`,
+                method: method,
+                dataType: 'application/json',
+                data: data,
+            })
+        }
+    </script>
+@endsection --}}
+
+<!-- JavaScript untuk menghandle Like AJAX -->
+{{-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".like-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                let resepId = this.getAttribute("data-resep-id");
+                let isLiked = this.getAttribute("data-liked") === "true"; // Ambil status like
+
+                // Kirim request ke backend menggunakan Fetch API
+                fetch("{{ route('toggle-like') }}", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        },
+                        body: JSON.stringify({
+                            id_resep: resepId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            let icon = this.querySelector("i");
+                            if (isLiked) {
+                                icon.classList.remove("fas",
+                                "text-danger"); // Hapus heart merah
+                                icon.classList.add("far",
+                                "text-secondary"); // Tambah heart kosong abu-abu
+                            } else {
+                                icon.classList.remove("far", "text-secondary");
+                                icon.classList.add("fas", "text-danger");
+                            }
+                            this.setAttribute("data-liked", !isLiked); // Update status like
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+            });
+        });
+    });
+</script> --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".like-btn").click(function() {
+            let button = $(this);
+            let resepId = button.data("resep-id");
+            let isLiked = button.data("liked") === "true";
+
+            $.ajax({
+                url: "{{ route('toggle-like') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id_resep: resepId
+                },
+                success: function(response) {
+                    // Toggle class heart icon
+                    if (isLiked) {
+                        button.find("i").removeClass("fas fa-heart text-danger").addClass(
+                            "far fa-heart text-secondary");
+                        button.data("liked", "false");
+                    } else {
+                        button.find("i").removeClass("far fa-heart text-secondary")
+                            .addClass("fas fa-heart text-danger");
+                        button.data("liked", "true");
+                    }
+                },
+                error: function(xhr) {
+                    console.error("Error:", xhr.responseText);
+                }
+            });
+        });
+    });
+</script>

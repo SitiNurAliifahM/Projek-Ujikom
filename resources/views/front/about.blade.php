@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading">
-                        <h3>Who we are and what we do?</h3>
+                        <h3>Siapakah kami dan apa yang kami lakukan?</h3>
                     </div>
                 </div>
             </div>

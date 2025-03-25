@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Komentar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KomentarController extends Controller
 {
@@ -33,9 +34,20 @@ class KomentarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->validate([
+            'isi_komentar' => 'required|string',
+        ]);
+
+        Komentar::create([
+            'isi_komentar' => $request->isi_komentar,
+            'id_resep' => $id,
+            'id_user' => Auth::id(),
+        ]);
+
+        return redirect()->route('resep.show', $id)->with('success', 'Komentar berhasil ditambahkan!');
+
     }
 
     /**
@@ -78,8 +90,15 @@ class KomentarController extends Controller
      * @param  \App\Models\Komentar  $komentar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Komentar $komentar)
+    public function destroy(Komentar $komentar, $id)
     {
-        //
+        $komentar = Komentar::findOrFail($id);
+
+        if (Auth::user()->role !== 'admin') {
+            return redirect()->back()->with('error', 'Anda tidak memiliki izin untuk menghapus komentar ini.');
+        }
+
+        $komentar->delete();
+        return redirect()->back()->with('success', 'Komentar berhasil dihapus.');
     }
 }

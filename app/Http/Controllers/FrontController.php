@@ -8,7 +8,8 @@ class FrontController extends Controller
 {
     public function index()
     {
-        return view('front.index');
+        $resep = Resep::take(6)->get();
+        return view('front.index', compact('resep'));
     }
 
     public function about()

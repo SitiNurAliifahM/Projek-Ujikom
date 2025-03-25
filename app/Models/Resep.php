@@ -33,8 +33,8 @@ class Resep extends Model
 
     // menghapus image
     public function deleteGambar(){
-        if($this->gambar && file_exists(public_path('gambars/resep' . $this->image))){
-            return unlink(public_path('gambars/product' . $this->gambar));
+        if($this->gambar && file_exists(public_path('gambars/resep' . $this->gambar))){
+            return unlink(public_path('gambars/resep' . $this->gambar));
         }
     }
 }
