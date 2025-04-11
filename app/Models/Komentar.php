@@ -9,7 +9,7 @@ class Komentar extends Model
 {
     use HasFactory;
     protected $fillable = ['id', 'isi_komentar', 'id_resep', 'id_user'];
-    public $timestamp = true;
+    public $timestamps = true;
 
     public function user()
     {

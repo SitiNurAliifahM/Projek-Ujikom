@@ -4,6 +4,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,21 +19,34 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [FrontController::class, 'index']); // halaman utama user
-Route::get('/search', [\App\Http\Controllers\ResepController::class, 'search'])->name('resep.search');
+// Route::get('/search', [\App\Http\Controllers\ResepController::class, 'search'])->name('resep.search');
 Route::get('tentang', [FrontController::class, 'about']);
 Route::get('kontak', [FrontController::class, 'kontak']);
 Route::get('resep', [FrontController::class, 'resep']);
 Route::get('/resep', [\App\Http\Controllers\ResepController::class, 'listResep'])->name('front.resep');
 Route::get('detail_resep/{id}', [FrontController::class, 'detail_resep']);
+Route::get('/komentar-public/{id}', [\App\Http\Controllers\KomentarController::class, 'getKomentar']);
+Route::get('/gambars/resep/{filename}', function ($filename) {
+    $path = public_path('gambars/resep/' . $filename);
+
+    if (!file_exists($path)) {
+        abort(404);
+    }
+
+    return Response::make(file_get_contents($path), 200, [
+        'Content-Type' => mime_content_type($path),
+        'Access-Control-Allow-Origin' => '*',
+    ]);
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/likes', [\App\Http\Controllers\LikeController::class, 'index']); // Get all likes (hanya untuk user login)
     Route::post('/like', [\App\Http\Controllers\LikeController::class, 'store']); // Like resep
     Route::delete('/like/resep/{id_resep}', [\App\Http\Controllers\LikeController::class, 'destroy']); // Unlike berdasarkan id_resep
     Route::post('/toggle-like', [\App\Http\Controllers\LikeController::class, 'toggleLike'])->name('toggle-like'); // Toggle like/unlike
-    Route::get('/resep/{id}', [\App\Http\Controllers\KomentarController::class, 'show'])->name('resep.show');
-    Route::post('/resep/{id}/komentar', [\App\Http\Controllers\KomentarController::class, 'store'])->name('komentar.store');
+    Route::get('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'index']);
+    Route::post('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'store']);
     Route::delete('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'destroy'])->name('komentar.destroy');
-
 });
 
 // Jika masih ingin menggunakan route di ResepController

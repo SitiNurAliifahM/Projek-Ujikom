@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\ResepController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +43,5 @@ Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login'])
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 });
+
+Route::middleware('auth:sanctum')->get('/profile', [UserController::class, 'profile']);

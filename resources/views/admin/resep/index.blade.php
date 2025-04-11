@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 @section('content')
+    @push('styles')
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    @endpush
+
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
@@ -24,6 +28,7 @@
                                 <th>Deskripsi</th>
                                 <th>Kategori Resep</th>
                                 <th>Gambar Resep</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -36,7 +41,20 @@
                                     <td>{{ Str::limit(strip_tags($data->deskripsi), 50) }}</td>
                                     <td>{{ $data->kategori->nama_kategori }}</td>
                                     <td>
-                                        <img src="{{ asset('gambars/resep/' . $data->gambar) }}" width="100">
+                                        <img src="{{ asset('gambars/resep/' . $data->gambar) }}"
+                                            style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+                                    </td>
+                                    <td>
+                                        @if ($data->status == 'approve')
+                                            <span class="badge bg-success text-white px-2 py-1 rounded-pill">approved</span>
+                                        @elseif ($data->status == 'pending')
+                                            <span class="badge bg-warning text-dark px-2 py-1 rounded-pill">pending</span>
+                                        @elseif ($data->status == 'rejected')
+                                            <span class="badge bg-danger text-white px-2 py-1 rounded-pill">rejected</span>
+                                        @else
+                                            <span
+                                                class="badge bg-secondary text-white px-2 py-1 rounded-pill">{{ $data->status }}</span>
+                                        @endif
                                     </td>
                                     <td>
                                         <form action="{{ route('resep.destroy', $data->id) }}"
@@ -76,4 +94,32 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('.table').DataTable({
+                    responsive: true,
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ data",
+                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                        paginate: {
+                            first: "Awal",
+                            last: "Akhir",
+                            next: "›",
+                            previous: "‹"
+                        },
+                        zeroRecords: "Tidak ada data yang ditemukan",
+                        infoEmpty: "Menampilkan 0 sampai 0 dari 0 data",
+                        infoFiltered: "(disaring dari total _MAX_ data)"
+                    }
+                });
+            });
+        </script>
+    @endpush
 @endsection

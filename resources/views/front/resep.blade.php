@@ -74,7 +74,7 @@
                             <div class="single-best-receipe-area mb-30">
                                 <a href="{{ url('detail_resep') . '/' . $data->id }}">
                                     <img src="{{ asset('/gambars/resep/' . $data->gambar) }}" alt=""
-                                        style="max-height: 250px; max-width:250px;">
+                                        style="width: 250px; height: 250px; object-fit: cover; border-radius: 10px;">
                                 </a>
                                 <div class="receipe-content d-flex justify-content-between align-items-center gap-2">
                                     <h5 class="mb-0" style="flex-grow: 1;">{{ $data->nama_resep }}</h5>
@@ -97,83 +97,6 @@
             </div>
         </section>
     </div>
-
-    <!-- ##### Follow Us Instagram Area Start ##### -->
-    <div class="follow-us-instagram">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h5>Follow Us Instagram</h5>
-                </div>
-            </div>
-        </div>
-        <!-- Instagram Feeds -->
-        {{-- <div class="insta-feeds d-flex flex-wrap">
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="img/bg-img/insta1.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="img/bg-img/insta2.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="img/bg-img/insta3.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="img/bg-img/insta4.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="img/bg-img/insta5.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="img/bg-img/insta6.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="img/bg-img/insta7.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div> --}}
-    </div>
-    <!-- ##### Follow Us Instagram Area End ##### -->
 @endsection
 
 

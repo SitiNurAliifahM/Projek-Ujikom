@@ -9,7 +9,7 @@ class Like extends Model
 {
     use HasFactory;
     protected $fillable = ['id', 'id_user', 'id_resep', 'is_like', 'added_at'];
-    public $timestamp = true;
+    public $timestamps = true;
 
     public function user()
     {

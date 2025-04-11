@@ -13,9 +13,28 @@ class KomentarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id_resep)
     {
-        //
+        $komentar = Komentar::where('id_resep', $id_resep)
+            ->with('user') // Ambil informasi user yang memberi komentar
+            ->latest() // Urutkan dari yang terbaru
+            ->get();
+
+        return response()->json($komentar);
+
+    }
+
+    public function getKomentar($id)
+    {
+        try {
+            $komentar = Komentar::where('id_resep', $id)->with('user')->latest()->get();
+            return response()->json($komentar);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     /**
@@ -36,18 +55,24 @@ class KomentarController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $request->validate([
-            'isi_komentar' => 'required|string',
-        ]);
+        try {
+            $request->validate([
+                'isi_komentar' => 'required|string|max:255',
+            ]);
 
-        Komentar::create([
-            'isi_komentar' => $request->isi_komentar,
-            'id_resep' => $id,
-            'id_user' => Auth::id(),
-        ]);
+            Komentar::create([
+                'id_resep' => $id,
+                'id_user' => auth()->id(),
+                'isi_komentar' => $request->isi_komentar,
+            ]);
 
-        return redirect()->route('resep.show', $id)->with('success', 'Komentar berhasil ditambahkan!');
-
+            return response()->json(['message' => 'Komentar berhasil ditambahkan']);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Gagal menambahkan komentar',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     /**
@@ -90,12 +115,13 @@ class KomentarController extends Controller
      * @param  \App\Models\Komentar  $komentar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Komentar $komentar, $id)
+    public function destroy($id)
     {
         $komentar = Komentar::findOrFail($id);
 
-        if (Auth::user()->role !== 'admin') {
-            return redirect()->back()->with('error', 'Anda tidak memiliki izin untuk menghapus komentar ini.');
+        // Cek apakah user adalah pemilik komentar atau admin
+        if (auth()->user()->id !== $komentar->id_user && auth()->user()->role !== 1) {
+            abort(403, 'Akses tidak diizinkan.');
         }
 
         $komentar->delete();

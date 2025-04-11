@@ -37,32 +37,21 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-3">
+                <div class="col-12 col-lg-3 offset-lg-3">
                     <!-- Single Contact Information -->
                     <div class="single-contact-information mb-30">
-                        <h6>Address:</h6>
+                        <h6>Alamat:</h6>
                         <p>481 Creekside Lane Avila <br>Beach, CA 93424</p>
                     </div>
                     <!-- Single Contact Information -->
                     <div class="single-contact-information mb-30">
-                        <h6>Phone:</h6>
-                        <p>+53 345 7953 32453 <br>+53 345 7557 822112</p>
+                        <h6>Telepon:</h6>
+                        <p>+62 342 1234 76556 <br>+62 345 7557 822112</p>
                     </div>
                     <!-- Single Contact Information -->
                     <div class="single-contact-information mb-30">
                         <h6>Email:</h6>
-                        <p>yourmail@gmail.com</p>
-                    </div>
-                </div>
-
-                <!-- Newsletter Area -->
-                <div class="col-12 col-lg-4">
-                    <div class="newsletter-form bg-img bg-overlay" style="background-image: url(img/bg-img/bg1.jpg);">
-                        <form action="#" method="post">
-                            <input type="email" name="email" placeholder="Subscribe to newsletter">
-                            <button type="submit" class="btn delicious-btn w-100">Subscribe</button>
-                        </form>
-                        <p>Fusce nec ante vitae lacus aliquet vulputate. Donec sceleri sque accumsan molestie.</p>
+                        <p>resepku2025@gmail.com</p>
                     </div>
                 </div>
             </div>

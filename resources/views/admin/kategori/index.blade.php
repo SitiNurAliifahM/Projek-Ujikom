@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 @section('content')
+    @push('styles')
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    @endpush
+
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
@@ -9,14 +13,14 @@
                     <!-- Tombol trigger modal Tambah -->
                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                         data-bs-target="#tambahKategoriModal">
-                        Tambah Kategori
+                        + Tambah Kategori
                     </button>
                 </div>
             </div>
 
             @if (session('error'))
-                <div class="bs-toast toast toast-placement-ex m-2 bg-danger top-0 end-0 fade show toast-custom" role="alert"
-                    aria-live="assertive" aria-atomic="true" id="toastError">
+                <div class="bs-toast toast toast-placement-ex m-2 bg-danger top-0 end-0 fade show toast-custom"
+                    role="alert" aria-live="assertive" aria-atomic="true" id="toastError">
                     <div class="toast-header">
                         <i class="bx bx-error me-2"></i>
                         <div class="me-auto fw-semibold">Error</div>
@@ -173,8 +177,7 @@
                             <div class="mb-3">
                                 <label for="namaKategori" class="form-label">Nama Kategori</label>
                                 <input type="text" class="form-control @error('nama_kategori') is-invalid @enderror"
-                                    id="namaKategori" name="nama_kategori" placeholder="Masukkan Nama Kategori"
-                                    required />
+                                    id="namaKategori" name="nama_kategori" placeholder="Masukkan Nama Kategori" required />
                                 @error('nama_kategori')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -195,4 +198,32 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('.table').DataTable({
+                    responsive: true,
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ data",
+                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                        paginate: {
+                            first: "Awal",
+                            last: "Akhir",
+                            next: "›",
+                            previous: "‹"
+                        },
+                        zeroRecords: "Tidak ada data yang ditemukan",
+                        infoEmpty: "Menampilkan 0 sampai 0 dari 0 data",
+                        infoFiltered: "(disaring dari total _MAX_ data)"
+                    }
+                });
+            });
+        </script>
+    @endpush
 @endsection

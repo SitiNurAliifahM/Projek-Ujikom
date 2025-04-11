@@ -9,7 +9,7 @@ class Resep extends Model
 {
     use HasFactory;
     protected $fillable = ['id', 'nama_resep', 'id_kategori', 'deskripsi', 'gambar', 'id_user', 'status'];
-    public $timestamp = true;
+    public $timestamps = true;
 
     public function kategori()
     {

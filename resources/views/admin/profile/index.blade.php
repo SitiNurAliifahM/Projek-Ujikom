@@ -34,7 +34,7 @@
                             <td>: <strong>{{ $user->email }}</strong></td>
                         </tr>
                         <tr>
-                            <th class="text">Role</th>
+                            <th class="text">Peran</th>
                             <td>: <strong>
                                     @if ($user->role)
                                         <span>Admin</span>

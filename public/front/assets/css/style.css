@@ -806,6 +806,7 @@ textarea:focus {
 
 /* :: 11.0 Quote Area */
 .quote-area {
+    justify-content: center;
   position: relative;
   z-index: 1;
   border: 10px solid #40ba37;

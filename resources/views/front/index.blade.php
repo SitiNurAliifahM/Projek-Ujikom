@@ -122,6 +122,7 @@
 
                                 <button type="button" class="like-btn" data-resep-id="{{ $data->id }}"
                                     data-liked="{{ $liked ? 'true' : 'false' }}"
+                                    data-logged-in="{{ auth()->check() ? 'true' : 'false' }}"
                                     style="background: none; border: none; cursor: pointer; outline: none">
                                     <i class="{{ $liked ? 'fas fa-heart text-danger' : 'far fa-heart text-secondary' }}"
                                         style="font-size: 20px;"></i>
@@ -157,7 +158,7 @@
     <!-- ##### Small Receipe Area Start ##### -->
     <section class="small-receipe-area section-padding-80-0">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach ($resep as $data)
                     <!-- Small Receipe Area -->
                     <div class="col-12 col-sm-6 col-lg-4">
@@ -182,102 +183,31 @@
     </section>
     <!-- ##### Small Receipe Area End ##### -->
 
-    <!-- ##### Quote Subscribe Area Start ##### -->
+    <!-- ##### Quote Area Start ##### -->
     <section class="quote-subscribe-adds">
-        <div class="container">
-            <div class="row align-items-end">
+        <div class="container ">
+            <div class="row align-content-center justify-content-center">
                 <!-- Quote -->
                 <div class="col-12 col-lg-4">
                     <div class="quote-area text-center">
                         <span>"</span>
-                        <h4>Nothing is better than going home to family and eating good food and relaxing</h4>
-                        <p>John Smith</p>
-                        <div class="date-comments d-flex justify-content-between">
-                            <div class="date">January 04, 2018</div>
-                        </div>
+                        <h4>Resep tidak memiliki jiwa. Anda, sebagai juru masak, harus memberikan jiwa pada resep tersebut.
+                        </h4>
+                        <p>Thomas Keller</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="quote-area text-center">
+                        <span>"</span>
+                        <h4>Memasak adalah kisah cinta. Anda harus jatuh cinta pada bahan-bahan dan orang yang memasaknya.
+                        </h4>
+                        <p>Alain Ducasse</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Quote Subscribe Area End ##### -->
-
-    <!-- ##### Follow Us Instagram Area Start ##### -->
-    {{-- <div class="follow-us-instagram">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h5>Follow Us Instragram</h5>
-                </div>
-            </div>
-        </div>
-        <!-- Instagram Feeds -->
-        <div class="insta-feeds d-flex flex-wrap">
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="{{ asset('front/assets/img/bg-img/insta1.jpg') }}" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="{{ asset('front/assets/img/bg-img/insta2.jpg') }}" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="{{ asset('front/assets/img/bg-img/insta3.jpg') }}" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="{{ asset('front/assets/img/bg-img/insta4.jpg') }}" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="{{ asset('front/assets/img/bg-img/insta5.jpg') }}" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="{{ asset('front/assets/img/bg-img/insta6.jpg') }}" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="{{ asset('front/assets/img/bg-img/insta7.jpg') }}" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- ##### Follow Us Instagram Area End ##### -->
+    <!-- ##### Quote Area End ##### -->
 @endsection
 
 {{-- @section('script')
@@ -379,6 +309,14 @@
     $(document).ready(function() {
         $(".like-btn").click(function() {
             let button = $(this);
+            let isLoggedIn = button.data("logged-in") === "true";
+
+            // Cek apakah user sudah login
+            if (!isLoggedIn) {
+                alert("Silakan login terlebih dahulu untuk menyukai resep.");
+                return;
+            }
+
             let resepId = button.data("resep-id");
             let isLiked = button.data("liked") === "true";
 
@@ -390,7 +328,6 @@
                     id_resep: resepId
                 },
                 success: function(response) {
-                    // Toggle class heart icon
                     if (isLiked) {
                         button.find("i").removeClass("fas fa-heart text-danger").addClass(
                             "far fa-heart text-secondary");
