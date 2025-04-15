@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Auth;
 
 class User extends Controller
@@ -10,6 +11,7 @@ class User extends Controller
     {
         // Mengambil data pengguna yang sedang login
         $user = Auth::user();
-        return view('front.profile', compact('user')); // Mengirim data pengguna ke view
+        $kategori = Kategori::all();
+        return view('front.profile', compact('user','kategori')); // Mengirim data pengguna ke view
     }
 }

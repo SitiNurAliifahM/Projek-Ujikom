@@ -66,8 +66,7 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
 
-    <script src="https://cdn.tiny.cloud/1/22kl6refl24luuy4b2macr4koyjbhwmz7xiyqbu1jlgvnmc9/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
+    <script src="/tinymce/tinymce.min.js"></script>
 
   </head>
 

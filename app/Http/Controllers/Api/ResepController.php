@@ -15,7 +15,7 @@ class ResepController extends Controller
      */
     public function index()
     {
-        $resep = Resep::latest()->with('kategori')->get(); // Mengambil resep dengan relasi kategori
+        $resep = Resep::with('kategori')->get(); // Mengambil resep dengan relasi kategori
         return response()->json($resep); // Kembalikan data dalam format JSON
     }
 

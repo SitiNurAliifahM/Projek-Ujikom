@@ -27,11 +27,11 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="basic-default-message">Deskripsi</label>
                                 <div class="col-sm-10">
-                                    <textarea for="deskripsi" class="form-control  @error('deskripsi') is-invalid @enderror" id="deskripsi" value="{{ old('deskripsi') }}" name="deskripsi"
-                                        placeholder="Masukkan bahan-bahan dan langkah-langkah" aria-describedby="basic-icon-default-message2" required>
+                                    <textarea for="deskripsi" class="form-control  @error('deskripsi') is-invalid @enderror" id="deskripsi"
+                                        value="{{ old('deskripsi') }}" name="deskripsi" placeholder="Masukkan bahan-bahan dan langkah-langkah"
+                                        aria-describedby="basic-icon-default-message2" required>
                                     </textarea>
-                                    <script src="https://cdn.tiny.cloud/1/22kl6refl24luuy4b2macr4koyjbhwmz7xiyqbu1jlgvnmc9/tinymce/6/tinymce.min.js"
-                                        referrerpolicy="origin"></script>
+                                    <script src="/tinymce/tinymce.min.js"></script>
                                     <script>
                                         tinymce.init({
                                             selector: '#deskripsi',

@@ -41,7 +41,7 @@ class HomeController extends Controller
     {
         $title = 'Profil';
         $user = auth()->user();
-        return view('admin.profile.index', compact('user', 'title'));
+        return view('admin.profile.index', compact('user', 'title',));
 
         return abort(403);
     }

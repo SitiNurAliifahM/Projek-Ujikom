@@ -42,6 +42,21 @@ Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login'])
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
+
+    // // route kategori
+    // Route::get('/kategori', [KategoriController::class, 'index']);
+    // Route::get('/kategori/{id}', [KategoriController::class, 'show']);
+    // Route::post('/kategori', [KategoriController::class, 'store']);
+    // Route::put('/kategori/{id}', [KategoriController::class, 'update']);
+    // Route::delete('/kategori/{id}', [KategoriController::class, 'destroy']);
+
+    // // route resep
+    // Route::get('/resep', [ResepController::class, 'index']);
+    // Route::get('/resep/{id}', [ResepController::class, 'show']);
+    // Route::post('/resep', [ResepController::class, 'store']);
+    // Route::put('/resep/{id}', [ResepController::class, 'update']);
+    // Route::delete('/resep/{id}', [ResepController::class, 'destroy']);
+
 });
 
 Route::middleware('auth:sanctum')->get('/profile', [UserController::class, 'profile']);
