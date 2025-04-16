@@ -35,11 +35,6 @@
                 <div data-i18n="Layouts">Resep</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="{{ route('pengajuanResep.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-food-menu"></i>
-                <div data-i18n="Layouts">Pengajuan Resep</div>
-            </a>
-        </li>
+        
     </ul>
 </aside>

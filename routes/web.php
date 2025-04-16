@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PengajuanResepController;
 use App\Http\Controllers\ResepController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +48,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'index']);
     Route::post('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'store']);
     Route::delete('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'destroy'])->name('komentar.destroy');
+    Route::put('resep/{id}/approve', [ResepController::class, 'approve'])->name('resep.approve');
+    Route::put('resep/{id}/reject', [ResepController::class, 'reject'])->name('resep.reject');
+
 });
 
 // Jika masih ingin menggunakan route di ResepController
@@ -65,14 +67,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', Role::class]], funct
         return view('admin.index');
     });
     Route::resource('kategori', \App\Http\Controllers\KategoriController::class);
-    Route::resource('resep', \App\Http\Controllers\ResepController::class);
-    Route::post('/pengajuanresep/store', [PengajuanResepController::class, 'store']) ->middleware('auth')   ->name('pengajuanresep.store');
+
 
     Route::get('profile', [HomeController::class, 'profile'])->name('profile.index');
     Route::get('profile/edit', [HomeController::class, 'editProfile'])->name('profile.edit');
     Route::put('profile/update/{id}', [HomeController::class, 'updateProfile'])->name('profile.update');
-    Route::resource('pengajuanResep', \App\Http\Controllers\PengajuanResepController::class);
-    Route::put('PengajuanResep/{id}/approve', [PengajuanResepController::class, 'approve'])->name('pengajuanResep.approve');
-    Route::put('PengajuanResep/{id}/reject', [PengajuanResepController::class, 'reject'])->name('pengajuanResep.reject');
+
+    Route::resource('resep', \App\Http\Controllers\ResepController::class);
+    // Route::put('resep/{id}/approve', [ResepController::class, 'approve'])->name('resep.approve');
+    // Route::put('resep/{id}/reject', [ResepController::class, 'reject'])->name('resep.reject');
 
 });

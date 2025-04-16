@@ -51,6 +51,13 @@ class ResepController extends Controller
         return response()->json($resep); // Kembalikan data resep dalam format JSON
     }
 
+    public function getByKategori($id)
+    {
+        $resep = Resep::where('id_kategori', $id)->get();
+
+        return response()->json($resep);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

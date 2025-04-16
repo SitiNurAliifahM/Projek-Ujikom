@@ -48,16 +48,16 @@
                             <div class="card-body p-4">
                                 <h5 class="fw-bold mb-4">Ajukan Resep</h5>
 
-                                <form action="{{ route('pengajuanresep.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('resep.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
 
                                     {{-- Judul --}}
                                     <div class="mb-3">
-                                        <label for="judul" class="form-label">Judul Resep</label>
-                                        <input type="text" class="form-control @error('judul') is-invalid @enderror"
-                                            id="judul" name="judul" value="{{ old('judul') }}"
+                                        <label for="nama_resep" class="form-label">Judul Resep</label>
+                                        <input type="text" class="form-control @error('nama_resep') is-invalid @enderror"
+                                            id="nama_resep" name="nama_resep" value="{{ old('nama_resep') }}"
                                             placeholder="Masukkan judul resep" required>
-                                        @error('judul')
+                                        @error('nama_resep')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -73,7 +73,7 @@
                                     </div>
 
                                     {{-- Kategori --}}
-                                    <div class="mb-3">
+                                    <div class="mb-4">
                                         <label for="id_kategori" class="form-label">Kategori</label>
                                         <select class="form-select @error('id_kategori') is-invalid @enderror"
                                             id="id_kategori" name="id_kategori" required>
@@ -107,8 +107,15 @@
                                         <input type="hidden" name="id_user" value="{{ $user->id ?? '' }}">
                                     </div>
 
+                                    {{-- Status Resep (default Pending) --}}
+                                    <div class="mb-4">
+                                        <label class="form-label fw-semibold">Status Resep:</label>
+                                        <input type="text" class="form-control" value="Pending" readonly>
+                                    </div>
+
+
                                     {{-- Tombol Simpan --}}
-                                    <button type="submit" class="btn btn-primary">Simpan Resep</button>
+                                    <button type="submit" class="btn btn-primary">Ajukan Resep</button>
                                 </form>
 
                                 {{-- TinyMCE --}}
@@ -128,7 +135,6 @@
                                         }
                                     });
 
-                                    // Validasi sebelum submit
                                     document.querySelector('form').addEventListener('submit', function(e) {
                                         tinymce.triggerSave();
                                         const deskripsiValue = tinymce.get("deskripsi").getContent({
@@ -140,6 +146,47 @@
                                         }
                                     });
                                 </script>
+
+                                {{-- Riwayat Resep --}}
+                                <hr class="my-4">
+                                <h5 class="fw-bold mb-3">Riwayat Resep Kamu</h5>
+
+                                @if ($resep->count() > 0)
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Judul</th>
+                                                    <th>Kategori</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($resep as $i => $data)
+                                                    <tr>
+                                                        <td>{{ $i + 1 }}</td>
+                                                        <td>{{ $data->nama_resep }}</td>
+                                                        <td>{{ $data->kategori->nama_kategori ?? '-' }}</td>
+                                                        <td>
+                                                            @if ($data->status == 'approve')
+                                                                <span class="badge bg-success">Disetujui</span>
+                                                            @elseif ($data->status == 'pending')
+                                                                <span class="badge bg-warning">Menunggu</span>
+                                                            @elseif ($data->status == 'rejected')
+                                                                <span class="badge bg-danger">Ditolak</span>
+                                                            @endif
+
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @else
+                                    <p class="text-muted">Belum ada resep yang diajukan.</p>
+                                @endif
+
                             </div>
                         </div>
                     </div>

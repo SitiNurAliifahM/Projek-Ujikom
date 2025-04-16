@@ -45,48 +45,59 @@
                                             style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
                                     </td>
                                     <td>
-                                        @if ($data->status == 'approve')
-                                            <span class="badge bg-success text-white px-2 py-1 rounded-pill">approved</span>
-                                        @elseif ($data->status == 'pending')
-                                            <span class="badge bg-warning text-dark px-2 py-1 rounded-pill">pending</span>
-                                        @elseif ($data->status == 'rejected')
-                                            <span class="badge bg-danger text-white px-2 py-1 rounded-pill">rejected</span>
+                                        @if ($data->status === 'approve')
+                                            <span class="badge bg-success">Disetujui</span>
+                                        @elseif ($data->status === 'pending')
+                                            <span class="badge bg-warning">Menunggu</span>
+                                        @elseif ($data->status === 'rejected')
+                                            <span class="badge bg-danger">Ditolak</span>
                                         @else
-                                            <span
-                                                class="badge bg-secondary text-white px-2 py-1 rounded-pill">{{ $data->status }}</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('resep.destroy', $data->id) }}"
-                                            onsubmit="return confirm('apakah anda yakin ingin menghapus resep ini?')"
-                                            method="POST" class="d-inline delete-form">
+
+                                        <form action="{{ route('resep.approve', $data->id) }}" method="POST"
+                                            style="display:inline;">
                                             @csrf
-                                            @method('DELETE')
-
-                                            <!-- Tombol Edit -->
-                                            <a href="{{ route('resep.edit', $data->id) }}">
-                                                <button type="button" class="btn btn-outline-success btn-sm">
-                                                    <i class="bx bxs-pencil" data-bs-toggle="tooltip"
-                                                        title="Edit Resep"></i>
-                                                </button>
-                                            </a>
-
-                                            <!-- Tombol Show Resep -->
-                                            <a href="{{ route('resep.show', $data->id) }}">
-                                                <button type="button" class="btn btn-outline-primary btn-sm">
-                                                    <i class="bx bxs-show" data-bs-toggle="tooltip"
-                                                        title="Detail Resep"></i>
-                                                </button>
-                                            </a>
-
-                                            <!-- Tombol Hapus -->
-                                            <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                <i class="bx bxs-trash-alt" data-bs-toggle="tooltip"
-                                                    title="Hapus Resep"></i>
-                                            </button>
+                                            @method('PUT')
+                                            <button class="btn btn-success btn-sm">Approve</button>
                                         </form>
-                                    </td>
-                                </tr>
+
+                                        <form action="{{ route('resep.reject', $data->id) }}" method="POST"
+                                            style="display:inline;">
+                                            @csrf
+                                            @method('PUT')
+                                            <button class="btn btn-danger btn-sm">Reject</button>
+                                        </form>
+                                        @endif
+
+                            </td>
+
+                            <td>
+                                <form action="{{ route('resep.destroy', $data->id) }}"
+                                    onsubmit="return confirm('apakah anda yakin ingin menghapus resep ini?')" method="POST"
+                                    class="d-inline delete-form">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <!-- Tombol Edit -->
+                                    <a href="{{ route('resep.edit', $data->id) }}">
+                                        <button type="button" class="btn btn-outline-success btn-sm">
+                                            <i class="bx bxs-pencil" data-bs-toggle="tooltip" title="Edit Resep"></i>
+                                        </button>
+                                    </a>
+
+                                    <!-- Tombol Show Resep -->
+                                    <a href="{{ route('resep.show', $data->id) }}">
+                                        <button type="button" class="btn btn-outline-primary btn-sm">
+                                            <i class="bx bxs-show" data-bs-toggle="tooltip" title="Detail Resep"></i>
+                                        </button>
+                                    </a>
+
+                                    <!-- Tombol Hapus -->
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        <i class="bx bxs-trash-alt" data-bs-toggle="tooltip" title="Hapus Resep"></i>
+                                    </button>
+                                </form>
+                            </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

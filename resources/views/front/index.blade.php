@@ -111,7 +111,7 @@
                         <div class="single-best-receipe-area mb-30">
                             <a href="{{ url('detail_resep') . '/' . $data->id }}">
                                 <img src="{{ asset('/gambars/resep/' . $data->gambar) }}" alt=""
-                                    style="max-height: 250px; max-width:250px;">
+                                    style="width: 250px; height: 250px; object-fit: cover; border-radius: 10px;">
                             </a>
                             <div class="receipe-content d-flex justify-content-between align-items-center gap-2">
                                 <h5 class="mb-0" style="flex-grow: 1;">{{ $data->nama_resep }}</h5>
@@ -122,7 +122,6 @@
 
                                 <button type="button" class="like-btn" data-resep-id="{{ $data->id }}"
                                     data-liked="{{ $liked ? 'true' : 'false' }}"
-                                    data-logged-in="{{ auth()->check() ? 'true' : 'false' }}"
                                     style="background: none; border: none; cursor: pointer; outline: none">
                                     <i class="{{ $liked ? 'fas fa-heart text-danger' : 'far fa-heart text-secondary' }}"
                                         style="font-size: 20px;"></i>
@@ -210,113 +209,11 @@
     <!-- ##### Quote Area End ##### -->
 @endsection
 
-{{-- @section('script')
-    <script>
-        // return;
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        const baseUrl = $('input[type=hidden][name="base_url"]').val()
-        console.log(baseUrl)
-
-        $('.like-btn').on('click', async function(e) {
-            e.preventDefault();
-
-            const resepId = $(this).data('resep-id')
-            const userId = $(this).data('user-id')
-            console.log(userId)
-
-            await onClickLikeBtn(resepId, $(this))
-        })
-
-        async function onClickLikeBtn(resepId = null, el) {
-            try {
-                const requestParams = {
-                    id_resep: resepId
-                }
-                const response = await ajaxRequest('toggle-like', 'POST', requestParams)
-
-                if (response?.liked) {
-                    el?.addClass('liked'); // Tambahkan class untuk menandakan like
-                } else {
-                    el?.removeClass('liked'); // Hapus class jika unlike
-                }
-            } catch (e) {
-                console.error(e)
-            } finally {
-                console.log(el)
-            }
-        }
-
-        const ajaxRequest = async (url, method = 'GET', data = {}) => {
-            await $.ajax({
-                url: `${baseUrl}/${url}`,
-                method: method,
-                dataType: 'application/json',
-                data: data,
-            })
-        }
-    </script>
-@endsection --}}
-
-<!-- JavaScript untuk menghandle Like AJAX -->
-{{-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll(".like-btn").forEach(button => {
-            button.addEventListener("click", function() {
-                let resepId = this.getAttribute("data-resep-id");
-                let isLiked = this.getAttribute("data-liked") === "true"; // Ambil status like
-
-                // Kirim request ke backend menggunakan Fetch API
-                fetch("{{ route('toggle-like') }}", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                        },
-                        body: JSON.stringify({
-                            id_resep: resepId
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            let icon = this.querySelector("i");
-                            if (isLiked) {
-                                icon.classList.remove("fas",
-                                "text-danger"); // Hapus heart merah
-                                icon.classList.add("far",
-                                "text-secondary"); // Tambah heart kosong abu-abu
-                            } else {
-                                icon.classList.remove("far", "text-secondary");
-                                icon.classList.add("fas", "text-danger");
-                            }
-                            this.setAttribute("data-liked", !isLiked); // Update status like
-                        }
-                    })
-                    .catch(error => console.error("Error:", error));
-            });
-        });
-    });
-</script> --}}
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $(".like-btn").click(function() {
             let button = $(this);
-            let isLoggedIn = button.data("logged-in") === "true";
-
-            // Cek apakah user sudah login
-            if (!isLoggedIn) {
-                alert("Silakan login terlebih dahulu untuk menyukai resep.");
-                return;
-            }
-
             let resepId = button.data("resep-id");
             let isLiked = button.data("liked") === "true";
 
@@ -328,6 +225,7 @@
                     id_resep: resepId
                 },
                 success: function(response) {
+                    // Toggle class heart icon
                     if (isLiked) {
                         button.find("i").removeClass("fas fa-heart text-danger").addClass(
                             "far fa-heart text-secondary");
