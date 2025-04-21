@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
@@ -26,10 +25,10 @@ class ResepController extends Controller
     {
         $query = Resep::query();
 
-// Tambahkan filter hanya resep yang diapprove
+        // Tambahkan filter hanya resep yang diapprove
         $query->where('status', 'approve');
 
-// Jika ada request kategori, filter berdasarkan kategori
+        // Jika ada request kategori, filter berdasarkan kategori
         if ($request->has('id_kategori') && $request->id_kategori != '') {
             $query->where('id_kategori', $request->id_kategori);
         }
@@ -86,7 +85,7 @@ class ResepController extends Controller
         $resep->deskripsi = $request->deskripsi;
 
         // Simpan ID user yang sedang login
-        $resep->id_user = $request->id_user ?? auth()->id();
+        $resep->id_user = auth()->user()->id;
 
         // Set status awal menjadi pending
         $resep->status = auth()->user()->role == 1 ? 'approve' : 'pending';
@@ -105,10 +104,17 @@ class ResepController extends Controller
         // Tampilkan notifikasi sukses
         Alert::success('Success', 'Resep berhasil diajukan dan menunggu persetujuan')->autoClose(5000);
 
-        dd($request->all());
-
         // Redirect ke halaman daftar resep
         return redirect()->back()->with('success', 'Resep berhasil diajukan dan menunggu persetujuan admin.');
+
+    }
+
+    public function show($id)
+    {
+        $resep = Resep::findOrFail($id);
+        $kategori = Kategori::all();
+
+        return view('admin.resep.show', compact('resep', 'kategori'));
     }
 
     public function approve($id)
@@ -130,14 +136,6 @@ class ResepController extends Controller
         Alert::error('Error', 'Pengajuan resep tidak disetujui !')->autoClose(1500);
         return redirect()->back();
     }
-
-    public function show($id)
-    {
-        $resep = Resep::findOrFail($id);
-        $kategori = Kategori::all();
-        return view('admin.resep.show', compact('resep', 'kategori'));
-    }
-
     /**
      * Show the form for editing the specified resource.
      *

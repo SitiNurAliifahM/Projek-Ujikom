@@ -42,7 +42,7 @@
     </div>
 
     <!-- Search Wrapper -->
-    <div class="search-wrapper">
+    {{-- <div class="search-wrapper">
         <!-- Close Btn -->
         <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
 
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Tempat menampilkan hasil pencarian -->
     <div id="searchResults"></div>

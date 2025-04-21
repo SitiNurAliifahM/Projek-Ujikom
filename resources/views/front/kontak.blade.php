@@ -29,11 +29,11 @@
                 <!-- Contact Text -->
                 <div class="col-12 col-lg-5">
                     <div class="contact-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse
-                            potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor
-                            enim. Phasellus posuere vestibulum ipsum, eget lobortis purus.</p>
-                        <p>Orci varius natoque penatibus et magnis dis ac pellentesque tortor. Aenean congue parturient
-                            montes, nascetur ridiculus mus.</p>
+                        <p>Terima kasih telah mengunjungi <strong>Resepku</strong>! Kami sangat menghargai setiap masukan,
+                            pertanyaan, atau ide yang kamu miliki. Jangan ragu untuk menghubungi kami kapan saja. Tim kami
+                            siap membantu kamu menemukan dan berbagi resep terbaik.</p>
+                        <p>Apakah kamu ingin memberikan saran fitur, melaporkan masalah, atau hanya ingin menyapa? Kami akan
+                            dengan senang hati mendengarnya!</p>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
                     <!-- Single Contact Information -->
                     <div class="single-contact-information mb-30">
                         <h6>Alamat:</h6>
-                        <p>481 Creekside Lane Avila <br>Beach, CA 93424</p>
+                        <p>JL Anggrek no 103 Bandung 40375 <br>Indonesia</p>
                     </div>
                     <!-- Single Contact Information -->
                     <div class="single-contact-information mb-30">

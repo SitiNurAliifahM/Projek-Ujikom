@@ -8,13 +8,23 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $resep = Resep::take(6)->get();
-        return view('front.index', compact('resep'));
+        // Ambil 3 resep dengan like terbanyak untuk ditampilkan sebagai "best resep"
+        $resep_terbaru = Resep::withCount('like') // hitung jumlah like
+            ->orderBy('like_count', 'desc') // urutkan dari like terbanyak
+            ->take(3)
+            ->get();
+
+        // Ambil 3 resep lain secara acak tapi tidak termasuk yang terbaru
+        $resep_lain = Resep::whereNotIn('id', $resep_terbaru->pluck('id'))->inRandomOrder()->take(6)->get();
+
+        return view('front.index', compact('resep_terbaru', 'resep_lain'));
     }
 
     public function about()
     {
-        return view('front.about');
+        $resepCount = Resep::count();
+
+        return view('front.about', compact('resepCount'));
     }
 
     public function kontak()

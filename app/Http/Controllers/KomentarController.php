@@ -121,10 +121,21 @@ class KomentarController extends Controller
 
         // Cek apakah user adalah pemilik komentar atau admin
         if (auth()->user()->id !== $komentar->id_user && auth()->user()->role !== 1) {
+            if (request()->expectsJson()) {
+                return response()->json(['message' => 'Akses tidak diizinkan.'], 403);
+            }
             abort(403, 'Akses tidak diizinkan.');
         }
 
         $komentar->delete();
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Komentar berhasil dihapus.',
+            ]);
+        }
+
         return redirect()->back()->with('success', 'Komentar berhasil dihapus.');
     }
 }

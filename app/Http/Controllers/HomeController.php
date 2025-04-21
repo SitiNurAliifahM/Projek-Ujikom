@@ -26,14 +26,27 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $userCount = User::count();
+        $userCount = User::where('role', '!=', 1)->count();
         $resepCount = Resep::count();
         $user = Auth::user();
-        $resep = Resep::take(6)->get();
+        // Ambil 3 resep dengan like terbanyak untuk ditampilkan sebagai "best resep"
+        $resep_terbaru = Resep::withCount('like') // hitung jumlah like
+            ->orderBy('like_count', 'desc') // urutkan dari like terbanyak
+            ->take(3)
+            ->get();
+
+        // Ambil 3 resep lain secara acak tapi tidak termasuk yang terbaru
+        $resep_lain = Resep::whereNotIn('id', $resep_terbaru->pluck('id'))->inRandomOrder()->take(6)->get();
+
         if ($user->role == 1) {
-            return view('admin.index', compact('userCount', 'resepCount'));
+            return view('admin.index', compact(
+                'userCount',
+                'resepCount',
+                'user'
+            ));
         } else {
-            return view('front.index', compact('resep'));
+            return view('front.index', compact('resep_terbaru',
+                'resep_lain'));
         }
     }
 
@@ -41,7 +54,7 @@ class HomeController extends Controller
     {
         $title = 'Profil';
         $user = auth()->user();
-        return view('admin.profile.index', compact('user', 'title',));
+        return view('admin.profile.index', compact('user', 'title', ));
 
         return abort(403);
     }
@@ -64,7 +77,7 @@ class HomeController extends Controller
         ]);
 
         // Memperbarui data pengguna
-        $user->name = $request->username;
+        $user->username = $request->username;
         $user->email = $request->email;
 
         // Simpan perubahan

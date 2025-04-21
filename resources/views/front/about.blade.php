@@ -44,7 +44,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-cool-fact">
                         <img src="front/assets/img/core-img/hamburger.png" alt="">
-                        <h3><span class="counter">1287</span></h3>
+                        <h3><span class="counter">{{$resepCount}}</span></h3>
                         <h6>Total Resep</h6>
                     </div>
                 </div>

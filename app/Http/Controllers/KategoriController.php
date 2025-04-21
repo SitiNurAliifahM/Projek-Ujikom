@@ -16,6 +16,14 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::all();
+        $kategoriLabels = $kategori->pluck('nama_kategori');
+        $kategoriCounts = $kategori->map(function ($item) {
+            // Simulasi jumlah item per kategori. Kamu bisa ganti sesuai relasi sebenarnya.
+            return rand(1, 20);
+        });
+        return view('admin.kategori.index', compact('kategori', 'kategoriLabels', 'kategoriCounts'));
+
+
         $title = 'Hapus Kategori!';
         $text = 'Apakah anda yakin ingin menghapus kategori ini?';
         confirmDelete($title, $text);

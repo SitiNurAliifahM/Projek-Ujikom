@@ -99,13 +99,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading">
-                        <h3>The best Receipies</h3>
+                        <h3>Resep Paling Banyak Disukai❤️</h3>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                @foreach ($resep as $data)
+                @foreach ($resep_terbaru as $data)
                     <!-- Single Best Recipe Area -->
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-best-receipe-area mb-30">
@@ -158,13 +158,15 @@
     <section class="small-receipe-area section-padding-80-0">
         <div class="container">
             <div class="row justify-content-center">
-                @foreach ($resep as $data)
+                @foreach ($resep_lain as $data)
                     <!-- Small Receipe Area -->
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-small-receipe-area d-flex">
                             <!-- Receipe Thumb -->
                             <div class="receipe-thumb">
-                                <img src="{{ asset('/gambars/resep/' . $data->gambar) }}" alt="">
+                                <img src="{{ asset('/gambars/resep/' . $data->gambar) }}"
+                                    style="width: 100px; height: 70px; object-fit: cover; border-radius: 10px;"
+                                    alt="">
                             </div>
                             <!-- Receipe Content -->
                             <div class="receipe-content">

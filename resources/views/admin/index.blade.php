@@ -32,8 +32,8 @@
                             <div class="card-body">
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="avatar flex-shrink-0">
-                                        <img src="{{ asset('assets/img/icons/unicons/user-solid-60.png') }}" alt="Credit Card"
-                                            class="rounded" />
+                                        <img src="{{ asset('assets/img/icons/unicons/user-solid-60.png') }}"
+                                            alt="Credit Card" class="rounded" />
                                     </div>
                                     <div class="dropdown">
                                         <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown"
@@ -57,8 +57,8 @@
                             <div class="card-body">
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="avatar flex-shrink-0">
-                                        <img src="{{ asset('assets/img/icons/unicons/food-menu-solid-60.png') }}" alt="Credit Card" style="width: 100%"
-                                            class="rounded" />
+                                        <img src="{{ asset('assets/img/icons/unicons/food-menu-solid-60.png') }}"
+                                            alt="Credit Card" style="width: 100%" class="rounded" />
                                     </div>
                                     <div class="dropdown">
                                         <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown"
@@ -66,18 +66,25 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                            <a class="dropdown-item" href="{{url('/admin/resep')}}">View More</a>
+                                            <a class="dropdown-item" href="{{ url('/admin/resep') }}">View More</a>
                                         </div>
                                     </div>
                                 </div>
                                 <span>Jumlah Resep</span>
-                                <h3 class="card-title text-nowrap mb-1">{{$resepCount}}</h3>
+                                <h3 class="card-title text-nowrap mb-1">{{ $resepCount }}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        {{-- <div class="row" style="margin-left: 20px; margin-right: 20px;">
+            <div class="col-md-12">
+                <canvas id="dataChart"></canvas>
+            </div>
+        </div> --}}
+
+
         {{-- end content wrapper --}}
         {{-- <div class="row">
             <!-- Order Statistics -->
@@ -352,4 +359,49 @@
             <!--/ Transactions -->
         </div> --}}
     </div>
+    {{-- <div class="row" style="margin-left: 20px; margin-right: 20px;">
+    <div class="col-md-12">
+        <canvas id="dataChart"></canvas>
+    </div> --}}
+</div>
+
+{{-- @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Mengambil data dari Blade dan mengonversinya menjadi JSON untuk JavaScript
+        const kategoriCounts = @json($kategoriCounts);
+        const kategoriLabels = @json($kategoriLabels);
+
+        // Memeriksa data yang dikirim
+        console.log(kategoriCounts);
+        console.log(kategoriLabels);
+
+        // Menyiapkan chart
+        const ctx = document.getElementById('dataChart').getContext('2d');
+        const dataChart = new Chart(ctx, {
+            type: 'doughnut', // Jenis chart, bisa diganti sesuai kebutuhan (e.g., bar, line, pie)
+            data: {
+                labels: kategoriLabels, // Label untuk chart
+                datasets: [{
+                    label: 'Jumlah Resep',
+                    data: kategoriCounts, // Data untuk grafik
+                    backgroundColor: ['#5A8DEE', '#39DA8A', '#FF5B5C', '#FDAC41', '#00CFDD', '#FF73C4'], // Warna untuk setiap bagian chart
+                    borderColor: '#ffffff', // Warna border setiap bagian chart
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true, // Agar chart responsif
+                plugins: {
+                    legend: {
+                        position: 'top', // Posisi legend
+                    }
+                }
+            }
+        });
+    });
+</script>
+@endpush --}}
+
 @endsection

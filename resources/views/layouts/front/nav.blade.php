@@ -81,12 +81,12 @@
                                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                                             id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                             aria-expanded="false">
-                                            <i class="fas fa-user-circle me-2"></i> <!-- Menambahkan ikon user -->
+                                            <i class="bx bx-user me-2"></i> <!-- Menambahkan ikon user -->
                                             <span class="d-none d-md-inline">{{ Auth::user()->username }}</span>
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="{{ route('profile') }}">Profil</a></li>
-                                            <li>
+                                            <li class="nav-item"><a class="dropdown-item" href="{{ route('profile') }}">Profil</a></li>
+                                            <li class="nav-item">
                                                 <form action="{{ route('logout') }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="dropdown-item">Logout</button>

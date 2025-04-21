@@ -48,7 +48,7 @@
                             <div class="card-body p-4">
                                 <h5 class="fw-bold mb-4">Ajukan Resep</h5>
 
-                                <form action="{{ route('resep.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('resep2.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
 
                                     {{-- Judul --}}
@@ -169,11 +169,11 @@
                                                         <td>{{ $data->nama_resep }}</td>
                                                         <td>{{ $data->kategori->nama_kategori ?? '-' }}</td>
                                                         <td>
-                                                            @if ($data->status == 'approve')
+                                                            @if ($data->status === 'approve')
                                                                 <span class="badge bg-success">Disetujui</span>
-                                                            @elseif ($data->status == 'pending')
+                                                            @elseif ($data->status === 'pending')
                                                                 <span class="badge bg-warning">Menunggu</span>
-                                                            @elseif ($data->status == 'rejected')
+                                                            @elseif ($data->status === 'rejected')
                                                                 <span class="badge bg-danger">Ditolak</span>
                                                             @endif
 

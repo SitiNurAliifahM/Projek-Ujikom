@@ -85,12 +85,12 @@
                                         <small class="text-muted">${new Date(komentar.created_at).toLocaleString()}</small>
                                     </div>
                                     ${bolehHapus ? `
-                                        <form onsubmit="hapusKomentar(event, ${komentar.id})" class="ms-2">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus komentar">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    ` : ''}
+                                                            <form onsubmit="hapusKomentar(event, ${komentar.id})" class="ms-2">
+                                                                <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus komentar">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </form>
+                                                        ` : ''}
                                 </div>
                             `;
                         });
@@ -144,17 +144,31 @@
                 fetch(`/komentar/${idKomentar}`, {
                         method: "DELETE",
                         headers: {
-                            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
+                            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+                            "Accept": "application/json"
                         }
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Respon tidak berhasil");
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         alert(data.message);
-                        document.getElementById(`komentar-${idKomentar}`).remove();
+
+                        const komentarElement = document.getElementById(`komentar-${idKomentar}`);
+                        if (komentarElement) {
+                            komentarElement.remove();
+                        } else {
+                            console.warn(
+                                `Element komentar dengan ID komentar-${idKomentar} tidak ditemukan di DOM.`
+                            );
+                        }
                     })
                     .catch(error => {
-                        alert("Gagal menghapus komentar.");
-                        console.error(error);
+                        alert("Gagal menghapus komentar. Silakan coba lagi.");
+                        console.error("Error saat menghapus komentar:", error);
                     });
             };
         });
