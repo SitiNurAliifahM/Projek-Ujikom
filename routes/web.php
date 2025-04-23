@@ -3,8 +3,6 @@
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResepController;
-use App\Http\Controllers\Resep2Controller;
-
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 // Route user yang bisa diakses tanpa login
 Route::get('/', [FrontController::class, 'index']); // halaman utama user
-// Route::get('/search', [\App\Http\Controllers\ResepController::class, 'search'])->name('resep.search');
 Route::get('tentang', [FrontController::class, 'about']);
 Route::get('kontak', [FrontController::class, 'kontak']);
 Route::get('resep', [FrontController::class, 'resep']);
@@ -40,15 +37,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'index']);
     Route::post('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'store']);
     Route::delete('/komentar/{id}', [\App\Http\Controllers\KomentarController::class, 'destroy'])->name('komentar.destroy');
-    Route::get('/profile', [\App\Http\Controllers\User::class, 'showProfile'])->middleware('auth')->name('profile');
+    Route::get('/profile', [\App\Http\Controllers\UserController::class, 'showProfile'])->middleware('auth')->name('profile');
+    Route::post('/update-profile', [\App\Http\Controllers\UserController::class, 'updateProfile'])->name('update.profile');
 
     // pengajuan resep oleh USER
-    Route::resource('resep2', \App\Http\Controllers\Resep2Controller::class);
-
-    // Route::get('/resep', [\App\Http\Controllers\ResepController::class, 'listResep'])->name('front.resep');
-    // Route::put('resep/{id}/approve', [ResepController::class, 'approve'])->name('resep.approve');
-    // Route::put('resep/{id}/reject', [ResepController::class, 'reject'])->name('resep.reject');
-
+    Route::resource('pengajuan-resep', \App\Http\Controllers\Resep2Controller::class);
 });
 
 Auth::routes();
@@ -65,6 +58,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', Role::class]], funct
     Route::put('resep/{id}/approve', [ResepController::class, 'approve'])->name('resep.approve');
     Route::put('resep/{id}/reject', [ResepController::class, 'reject'])->name('resep.reject');
     Route::get('profile', [HomeController::class, 'profile'])->name('profile.index');
-    Route::put('profile/update/{id}', [HomeController::class, 'updateProfile'])->name('profile.update');
-
 });

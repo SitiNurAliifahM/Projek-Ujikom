@@ -1,9 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-    @push('styles')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    @endpush
-
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
@@ -50,8 +46,8 @@
                                         @elseif ($data->status === 'rejected')
                                             <button class="btn btn-danger btn-sm">Reject</button>
                                         @else
-                                            <form action="{{ route('resep.approve', $data->id) }}" method="POST"
-                                     `           style="display:inline;">
+                                            <form action="{{ route('resep.approve', $data->id) }}" method="POST" `
+                                                style="display:inline;">
                                                 @csrf
                                                 @method('PUT')
                                                 <button class="btn btn-success btn-sm">Approve</button>
@@ -104,32 +100,4 @@
             </div>
         </div>
     </div>
-
-    @push('scripts')
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
-        <script>
-            $(document).ready(function() {
-                $('.table').DataTable({
-                    responsive: true,
-                    language: {
-                        search: "Cari:",
-                        lengthMenu: "Tampilkan _MENU_ data",
-                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-                        paginate: {
-                            first: "Awal",
-                            last: "Akhir",
-                            next: "›",
-                            previous: "‹"
-                        },
-                        zeroRecords: "Tidak ada data yang ditemukan",
-                        infoEmpty: "Menampilkan 0 sampai 0 dari 0 data",
-                        infoFiltered: "(disaring dari total _MAX_ data)"
-                    }
-                });
-            });
-        </script>
-    @endpush
 @endsection

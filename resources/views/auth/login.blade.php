@@ -110,19 +110,10 @@
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                     @error('password')
-    <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                              </span>
-@enderror
-                </div>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <a href="#">
-                        <small>Lupa kata sandi?</small>
-                    </a>
-                    <div class="form-check mb-0">
-                        <input class="form-check-input" type="checkbox" id="remember-me" />
-                        <label class="form-check-label" for="remember-me"> Ingat Aku </label>
-                    </div>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="mb-3">
                   <button class="btn btn-success d-grid w-100" type="submit">Masuk</button>

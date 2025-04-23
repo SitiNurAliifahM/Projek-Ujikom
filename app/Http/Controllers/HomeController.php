@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Resep;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -26,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $kategoriCount = DB::table('reseps')
+            ->join('kategoris', 'reseps.id_kategori', '=', 'kategoris.id')
+            ->select('kategoris.nama_kategori', DB::raw('count(*) as total'))
+            ->groupBy('kategoris.nama_kategori')
+            ->get();
+
+        $hero_resep = Resep::latest()->take(3)->get();
         $userCount = User::where('role', '!=', 1)->count();
         $resepCount = Resep::count();
         $user = Auth::user();
@@ -46,7 +53,7 @@ class HomeController extends Controller
             ));
         } else {
             return view('front.index', compact('resep_terbaru',
-                'resep_lain'));
+                'resep_lain', 'hero_resep', 'resepCount', 'kategoriCount'));
         }
     }
 
@@ -57,34 +64,6 @@ class HomeController extends Controller
         return view('admin.profile.index', compact('user', 'title', ));
 
         return abort(403);
-    }
-
-    public function editProfile()
-    {
-        $user = auth()->user();
-        return view('admin.profile.edit-profile', compact('user'));
-
-    }
-
-    public function updateProfile(Request $request, $id)
-    {
-        $user = User::findOrFail($id); // Mencari pengguna berdasarkan ID
-
-        // Validasi data yang di-submit
-        $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-        ]);
-
-        // Memperbarui data pengguna
-        $user->username = $request->username;
-        $user->email = $request->email;
-
-        // Simpan perubahan
-        $user->save();
-
-        // Redirect ke halaman edit profil dengan pesan sukses
-        return redirect()->route('profile.index', ['id' => $user->id])->with('success', 'Profil berhasil diperbarui.');
     }
 
 }

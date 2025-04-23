@@ -13,7 +13,7 @@
                     </div> --}}
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="index.html"><img src="{{asset('front/assets/img/core-img/resep-removebg-preview.png')}}" alt="" style="width: 40%"></a>
+                        <a href="{{route('home')}}"><img src="{{asset('front/assets/img/core-img/resep-removebg-preview.png')}}" alt="" style="width: 40%"></a>
                     </div>
                     <!-- Copywrite -->
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

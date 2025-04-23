@@ -40,16 +40,6 @@ class ResepController extends Controller
 
     }
 
-    public function search(Request $request)
-    {
-        $query = $request->input('query');
-
-        $resep = Resep::where('nama_kategori', 'LIKE', "%$query%")
-            ->orWhere('kategori', 'LIKE', "%$query%")
-            ->get();
-
-        return view('front.index', compact('resep'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -101,11 +91,9 @@ class ResepController extends Controller
         // Simpan data ke database
         $resep->save();
 
-        // Tampilkan notifikasi sukses
-        Alert::success('Success', 'Resep berhasil diajukan dan menunggu persetujuan')->autoClose(5000);
+        Alert::success('Success', 'Resep berhasil ditambahkan')->autoClose(5000);
 
-        // Redirect ke halaman daftar resep
-        return redirect()->back()->with('success', 'Resep berhasil diajukan dan menunggu persetujuan admin.');
+        return redirect()->route('resep.index');
 
     }
 
@@ -181,7 +169,6 @@ class ResepController extends Controller
             $resep->gambar = $name;
         }
 
-        // dd($id);die;
         $resep->save();
         Alert::success('Success', 'Resep berhasil diubah')->autoClose(5000);
         return redirect()->route('resep.index');

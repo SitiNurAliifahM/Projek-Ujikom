@@ -32,41 +32,14 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-12 col-lg-3">
-                            <input type="search" name="search" placeholder="Search Receipies">
-                        </div>
-                        <div class="col-12 col-lg-3 text-right">
-                            <button type="submit" class="btn delicious-btn">Search</button>
-                        </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- Receipe Slider -->
-        {{-- <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="receipe-slider owl-carousel">
-                        <img src="{{asset('front/assets/img/bg-img/bg5.jpg')}}" alt="">
-                        <img src="{{asset('front/assets/img/bg-img/bg5.jpg')}}" alt="">
-                        <img src="{{asset('front/assets/img/bg-img/bg5.jpg')}}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
         <!-- Receipe Content Area -->
         <section class="best-receipe-area">
             <div class="container">
-                {{-- <div class="row">
-                    <div class="col-12">
-                        <div class="section-heading">
-                            <h3>The best Receipies</h3>
-                        </div>
-                    </div>
-                </div> --}}
-
                 <div class="row">
                     @foreach ($resep as $data)
                         <!-- Single Best Recipe Area -->

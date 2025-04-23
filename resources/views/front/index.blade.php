@@ -3,98 +3,29 @@
     <!-- ##### Hero Area Start ##### -->
     <section class="hero-area">
         <div class="hero-slides owl-carousel">
-            <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(front/assets/img/bg-img/bg1.jpg);">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
-                                <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem
-                                    eget dui tristique, ac posuere arcu varius.</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp"
-                                    data-delay="1000ms">See Receipe</a>
+            @foreach ($hero_resep as $data)
+                <div class="single-hero-slide bg-img"
+                    style="background-image: url('{{ asset('/gambars/resep/' . $data->gambar) }}');">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                                <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                                    <h2 data-animation="fadeInUp" data-delay="300ms">{{ $data->nama_resep }}</h2>
+                                    <a href="{{ url('detail_resep/' . $data->id) }}" class="btn delicious-btn"
+                                        data-animation="fadeInUp" data-delay="1000ms">Lihat Resep</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(front/assets/img/bg-img/bg6.jpg);">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
-                                <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem
-                                    eget dui tristique, ac posuere arcu varius.</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp"
-                                    data-delay="1000ms">See Receipe</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(front/assets/img/bg-img/bg7.jpg);">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
-                                <h2 data-animation="fadeInUp" data-delay="300ms">Delicios Homemade Burger</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Cras tristique nisl vitae luctus sollicitudin. Fusce consectetur sem
-                                    eget dui tristique, ac posuere arcu varius.</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp"
-                                    data-delay="1000ms">See Receipe</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
+
     <!-- ##### Hero Area End ##### -->
 
-    <!-- ##### Top Catagory Area Start ##### -->
-    <section class="top-catagory-area section-padding-80-0">
-        <div class="container">
-            <div class="row">
-                <!-- Top Catagory Area -->
-                <div class="col-12 col-lg-6">
-                    <div class="single-top-catagory">
-                        <img src="front/assets/img/bg-img/bg2.jpg" alt="">
-                        <!-- Content -->
-                        <div class="top-cta-content">
-                            <h3>Strawberry Cake</h3>
-                            <h6>Simple &amp; Delicios</h6>
-                            <a href="receipe-post.html" class="btn delicious-btn">See Full Receipe</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Top Catagory Area -->
-                <div class="col-12 col-lg-6">
-                    <div class="single-top-catagory">
-                        <img src="front/assets/img/bg-img/bg3.jpg" alt="">
-                        <!-- Content -->
-                        <div class="top-cta-content">
-                            <h3>Chinesse Noodles</h3>
-                            <h6>Simple &amp; Delicios</h6>
-                            <a href="receipe-post.html" class="btn delicious-btn">See Full Receipe</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Top Catagory Area End ##### -->
-
     <!-- ##### Best Receipe Area Start ##### -->
-    <section class="best-receipe-area">
+    <section class="best-receipe-area section-padding section-border">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -135,28 +66,51 @@
     </section>
     <!-- ##### Best Receipe Area End ##### -->
 
-    <!-- ##### CTA Area Start ##### -->
-    <section class="cta-area bg-img bg-overlay" style="background-image: url(front/assets/img/bg-img/bg4.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <!-- Cta Content -->
-                    <div class="cta-content text-center">
-                        <h2>Gluten Free Receipies</h2>
-                        <p>Fusce nec ante vitae lacus aliquet vulputate. Donec scelerisque accumsan molestie. Vestibulum
-                            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras sed accumsan
-                            neque. Ut vulputate, lectus vel aliquam congue, risus leo elementum nibh</p>
-                        <a href="#" class="btn delicious-btn">Discover all the receipies</a>
+    <section class="about-area section-padding section-border">
+        <div class="container">
+            <div class="row align-items-center mt-70">
+                <!-- Single Cool Fact -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact">
+                        <img src="front/assets/img/core-img/hamburger.png" alt="">
+                        <h3><span class="counter">{{ $resepCount }}</span></h3>
+                        <h6>Total Resep</h6>
                     </div>
                 </div>
+
+                @foreach ($kategoriCount as $kategori)
+                    <!-- Single Cool Fact -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-cool-fact">
+                            @php
+                                // Menentukan gambar & label berdasarkan nama kategori
+                                $img = 'salad.png';
+                                $label = 'Makanan Pembuka';
+                                if ($kategori->nama_kategori == 'Makanan Utama') {
+                                    $img = 'rib.png';
+                                    $label = 'Makanan Utama';
+                                } elseif ($kategori->nama_kategori == 'Makanan Penutup') {
+                                    $img = 'pancake.png';
+                                    $label = 'Makanan Penutup';
+                                }
+                            @endphp
+                            <img src="front/assets/img/core-img/{{ $img }}" alt="">
+                            <h3><span class="counter">{{ $kategori->total }}</span></h3>
+                            <h6>{{ $label }}</h6>
+                        </div>
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </section>
-    <!-- ##### CTA Area End ##### -->
 
     <!-- ##### Small Receipe Area Start ##### -->
-    <section class="small-receipe-area section-padding-80-0">
+    <section class="small-receipe-area section-padding section-border">
         <div class="container">
+            <div class="section-heading">
+                <h3>Daftar Resep</h3>
+            </div>
             <div class="row justify-content-center">
                 @foreach ($resep_lain as $data)
                     <!-- Small Receipe Area -->
@@ -185,7 +139,7 @@
     <!-- ##### Small Receipe Area End ##### -->
 
     <!-- ##### Quote Area Start ##### -->
-    <section class="quote-subscribe-adds">
+    <section class="quote-subscribe-adds section-padding section-border">
         <div class="container ">
             <div class="row align-content-center justify-content-center">
                 <!-- Quote -->

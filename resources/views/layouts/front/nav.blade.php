@@ -45,7 +45,7 @@
         <div class="classy-nav-container breakpoint-off">
             <div class="container">
                 <!-- Menu -->
-                <nav class="classy-navbar fixed-top justify-content-between" id="deliciousNav">
+                <nav class="classy-navbar fixed-top justify-content-center" style="background: white" id="deliciousNav">
 
                     <!-- Logo -->
                     <a class="nav-brand" href="{{ url('/') }}">
@@ -85,12 +85,19 @@
                                             <span class="d-none d-md-inline">{{ Auth::user()->username }}</span>
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li class="nav-item"><a class="dropdown-item" href="{{ route('profile') }}">Profil</a></li>
-                                            <li class="nav-item">
-                                                <form action="{{ route('logout') }}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="dropdown-item">Logout</button>
-                                                </form>
+                                            <li class="cn-dropdown-item has-down">
+                                                <ul class="dropdown">
+                                                    <li><a href="{{ route('profile') }}">Profil</a></li>
+                                                    <li>
+                                                        <form action="{{ route('logout') }}" method="POST"
+                                                            style="margin: 0;">
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item">Logout</button>
+                                                        </form>
+                                                    </li>
+                                                    <li><a href="{{ route('pengajuan-resep.create') }}">Pengajuan
+                                                            Resep</a></li>
+                                                </ul>
                                             </li>
                                         </ul>
                                     </li>
@@ -103,13 +110,6 @@
 
                             </ul>
 
-                            <!-- Newsletter Form -->
-                            <input type="text" name="search" class="search-input" placeholder="Cari Resep..."
-                                value="{{ request('search') }}">
-                            <button type="submit" class="search-btn">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-
                         </div>
                         <!-- Nav End -->
                     </div>
@@ -118,4 +118,3 @@
         </div>
     </div>
 </header>
-<!-- ##### Header Area End ##### -->

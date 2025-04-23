@@ -48,7 +48,6 @@
                                 </div>
                                 <span>Jumlah Pengguna</span>
                                 <h3 class="card-title text-nowrap mb-1">{{ $userCount }}</h3>
-                                {{-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> {{$userCount}}</small> --}}
                             </div>
                         </div>
                     </div>

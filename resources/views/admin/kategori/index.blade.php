@@ -1,9 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-    @push('styles')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    @endpush
-
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
@@ -19,8 +15,8 @@
             </div>
 
             @if (session('error'))
-                <div class="bs-toast toast toast-placement-ex m-2 bg-danger top-0 end-0 fade show toast-custom"
-                    role="alert" aria-live="assertive" aria-atomic="true" id="toastError">
+                <div class="bs-toast toast toast-placement-ex m-2 bg-danger top-0 end-0 fade show toast-custom" role="alert"
+                    aria-live="assertive" aria-atomic="true" id="toastError">
                     <div class="toast-header">
                         <i class="bx bx-error me-2"></i>
                         <div class="me-auto fw-semibold">Error</div>
@@ -95,43 +91,6 @@
                                     </td>
                                 </tr>
 
-                                <!-- Modal Edit Kategori -->
-                                {{-- <div class="modal fade" id="editKategoriModal-{{ $data->id }}" tabindex="-1"
-                                    aria-labelledby="editKategoriLabel-{{ $data->id }}" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editKategoriLabel-{{ $data->id }}">Edit
-                                                    Kategori</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="{{ route('kategori.update', $data->id) }}">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="mb-3">
-                                                        <label for="editNamaKategori-{{ $data->id }}"
-                                                            class="form-label">Nama Kategori</label>
-                                                        <input type="text" class="form-control"
-                                                            id="editNamaKategori-{{ $data->id }}" name="nama_kategori"
-                                                            value="{{ $data->nama_kategori }}" required />
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">
-                                                            Tutup
-                                                        </button>
-                                                        <button type="submit" class="btn btn-primary">
-                                                            Simpan Perubahan
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
-
                                 <!-- Modal Show Kategori -->
                                 <div class="modal fade" id="showKategoriModal-{{ $data->id }}" tabindex="-1"
                                     aria-labelledby="showKategoriLabel-{{ $data->id }}" aria-hidden="true">
@@ -190,7 +149,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Tutup
                         </button>
-                        <button type="submit" form="tambahKategoriForm" class="btn btn-primary">
+                        <button type="submit" form="tambahKategoriForm" class="btn btn-success">
                             Simpan
                         </button>
                     </div>
@@ -198,32 +157,4 @@
             </div>
         </div>
     </div>
-
-    @push('scripts')
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
-        <script>
-            $(document).ready(function() {
-                $('.table').DataTable({
-                    responsive: true,
-                    language: {
-                        search: "Cari:",
-                        lengthMenu: "Tampilkan _MENU_ data",
-                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-                        paginate: {
-                            first: "Awal",
-                            last: "Akhir",
-                            next: "›",
-                            previous: "‹"
-                        },
-                        zeroRecords: "Tidak ada data yang ditemukan",
-                        infoEmpty: "Menampilkan 0 sampai 0 dari 0 data",
-                        infoFiltered: "(disaring dari total _MAX_ data)"
-                    }
-                });
-            });
-        </script>
-    @endpush
 @endsection
