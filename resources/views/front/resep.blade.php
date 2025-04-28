@@ -101,7 +101,13 @@
                     }
                 },
                 error: function(xhr) {
-                    console.error("Error:", xhr.responseText);
+                    if (xhr.status === 401) {
+                        alert(
+                            "Peringatan: Anda harus login terlebih dahulu untuk menyukai resep."
+                            );
+                    } else {
+                        console.error("Terjadi kesalahan:", xhr.responseText);
+                    }
                 }
             });
         });

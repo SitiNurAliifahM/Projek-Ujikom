@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{{ asset('front/assets/scss/_theme_color.scss') }}">
     <link rel="stylesheet" href="{{ asset('front/assets/scss/style.scss') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -40,27 +42,6 @@
         <img src="{{ asset('front/assets/img/core-img/resep-removebg-preview.png') }}" alt=""
             style="width: 70px">
     </div>
-
-    <!-- Search Wrapper -->
-    {{-- <div class="search-wrapper">
-        <!-- Close Btn -->
-        <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <form id="searchForm">
-                        <input type="search" id="searchInput" name="search" placeholder="Cari resep atau kategori...">
-                        <span id="searchButton"><i class="fa fa-search" aria-hidden="true"></i></span>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-    <!-- Tempat menampilkan hasil pencarian -->
-    <div id="searchResults"></div>
-
 
     <!-- ##### Header Area Start ##### -->
     @include('layouts.front.nav')

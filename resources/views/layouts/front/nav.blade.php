@@ -88,13 +88,6 @@
                                             <li class="cn-dropdown-item has-down">
                                                 <ul class="dropdown">
                                                     <li><a href="{{ route('profile') }}">Profil</a></li>
-                                                    <li>
-                                                        <form action="{{ route('logout') }}" method="POST"
-                                                            style="margin: 0;">
-                                                            @csrf
-                                                            <button type="submit" class="dropdown-item">Logout</button>
-                                                        </form>
-                                                    </li>
                                                     <li><a href="{{ route('pengajuan-resep.create') }}">Pengajuan
                                                             Resep</a></li>
                                                 </ul>
